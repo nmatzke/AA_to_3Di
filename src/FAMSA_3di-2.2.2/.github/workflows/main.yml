@@ -1,0 +1,184 @@
+name: GitHub Actions CI
+
+on:
+  push:
+    branches: [ master, experimental, develop ]
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+ 
+jobs:
+  
+  make-tests:
+    name: Make
+    strategy:
+      matrix:
+        machine: [ubuntu-latest, macOS-12]
+    runs-on: ['${{ matrix.machine }}']
+    
+    env: 
+      REF_DIR: ./test/adeno_fiber
+      INPUT: ./test/adeno_fiber/adeno_fiber
+ 
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: |
+        g++ --version
+        make -j
+        
+    - name: copy sl->slink references
+      run: |
+        cp ./test/adeno_fiber/sl.fasta ./test/adeno_fiber/slink.fasta
+        cp ./test/hemopexin/medoid-sl.fasta ./test/hemopexin/medoid-slink.fasta  
+    
+    - name: tar artifacts
+      run: tar -cvf famsa.tar ./famsa ./test   
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: executable-artifact-${{ matrix.machine }}
+        path: ./famsa.tar    
+      
+    
+  ########################################################################################    
+    
+  full-tree:
+    name: Full tree (adeno-fiber)
+    needs: make-tests
+    strategy:
+      fail-fast: false
+      matrix:
+        tree: [sl, upgma]
+        machine: [ubuntu-latest, macOS-12]
+   
+    runs-on: ['${{ matrix.machine }}']
+  
+    env: 
+      REF_DIR: ./test/adeno_fiber
+      INPUT: ./test/adeno_fiber/adeno_fiber
+ 
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: executable-artifact-${{ matrix.machine }}
+        path: ./
+        
+    - name: untar artifacts
+      run: tar -xf famsa.tar   
+
+    - name: ${{matrix.tree}} (tree only)
+      run: |
+        ./famsa -v -gt ${{matrix.tree}} -gt_export ${INPUT} ${{matrix.tree}}.dnd
+        cmp ${{matrix.tree}}.dnd ${REF_DIR}/${{matrix.tree}}.dnd
+    
+    - name: ${{matrix.tree}} (from tree)
+      run: |
+        ./famsa -v -gt import ${{matrix.tree}}.dnd ${INPUT} ${{matrix.tree}}.dnd.fasta
+        cmp ${{matrix.tree}}.dnd.fasta ${REF_DIR}/${{matrix.tree}}.fasta
+    
+    - name: ${{matrix.tree}} (complete alignment)
+      run: |
+        ./famsa -v -gt ${{matrix.tree}} ${INPUT} ${{matrix.tree}}.fasta
+        cmp ${{matrix.tree}}.fasta ${REF_DIR}/${{matrix.tree}}.fasta
+         
+  ########################################################################################            
+    
+  medoid-tree:
+    name: Medoid tree (hemopexin)
+    needs: full-tree
+    strategy:
+      fail-fast: false
+      matrix:
+        tree: [sl, upgma, nj]
+        machine: [ubuntu-latest, macOS-12]
+   
+    runs-on: ['${{ matrix.machine }}']
+      
+    env: 
+      REF_DIR: ./test/hemopexin
+      INPUT: ./test/hemopexin/hemopexin
+ 
+    steps:  
+    - uses: actions/download-artifact@v2
+      with:
+        name: executable-artifact-${{ matrix.machine }}
+        path: ./
+        
+    - name: untar artifacts
+      run: tar -xf famsa.tar       
+
+    - name: medoid + ${{matrix.tree}}  (tree only)
+      run: |
+        ./famsa -medoidtree -gt ${{matrix.tree}} -gt_export ${INPUT} medoid-${{matrix.tree}}.dnd
+        cmp  medoid-${{matrix.tree}}.dnd ${REF_DIR}/medoid-${{matrix.tree}}.dnd
+    
+    - name: medoid + ${{matrix.tree}}  (complete alignment)
+      run: |
+        ./famsa -medoidtree -gt ${{matrix.tree}} ${INPUT} medoid-${{matrix.tree}}.fasta
+        cmp medoid-${{matrix.tree}}.fasta ${REF_DIR}/medoid-${{matrix.tree}}.fasta
+     
+    - name: medoid + ${{matrix.tree}}  (from tree)
+      run: |
+        ./famsa -gt import medoid-${{matrix.tree}}.dnd ${INPUT} medoid-${{matrix.tree}}.dnd.fasta
+        cmp medoid-${{matrix.tree}}.dnd.fasta ${REF_DIR}/medoid-${{matrix.tree}}.fasta
+        
+    - name: medoid + ${{matrix.tree}}  (non-default params)
+      run: |
+        ./famsa -medoidtree -gt ${{matrix.tree}} -gt_export -subtree_size 10 -sample_size 100 -cluster_fraction 0.2 -cluster_iters 1 ${INPUT} medoid-${{matrix.tree}}-params.dnd
+        cmp  medoid-${{matrix.tree}}-params.dnd ${REF_DIR}/medoid-${{matrix.tree}}-params.dnd
+        
+  ########################################################################################        
+         
+  other-tests:
+    name: Other tests (adeno-fiber)
+    needs: medoid-tree
+    strategy:
+      fail-fast: false
+      matrix:
+        machine: [ubuntu-latest, macOS-12]
+   
+    runs-on: ['${{ matrix.machine }}']
+        
+    env: 
+      REF_DIR: ./test/adeno_fiber
+      INPUT: ./test/adeno_fiber/adeno_fiber
+     
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: executable-artifact-${{ matrix.machine }}
+        path: ./
+        
+    - name: untar artifacts
+      run: tar -xf famsa.tar   
+    
+    - name: non-default gaps
+      run: |
+        ./famsa -go 10 -ge 2 -tgo 0.5 -tge 1.0 -gsd 3 -gsl 30 ${INPUT} gaps.fasta
+        cmp gaps.fasta ${REF_DIR}/gaps.fasta
+    
+    - name: export distance
+      run: |
+        ./famsa -dist_export ${INPUT} dist.csv
+        cmp dist.csv ${REF_DIR}/dist.csv
+        
+    - name: export distance (square)
+      run: |
+        ./famsa -dist_export -square_matrix ${INPUT} dist_sq.csv
+        cmp dist_sq.csv ${REF_DIR}/dist_sq.csv
+        
+    - name: export pid
+      run: |
+        ./famsa -dist_export -pid ${INPUT} pid.csv
+        cmp pid.csv ${REF_DIR}/pid.csv
+        
+    - name: export pid (square)
+      run: |
+        ./famsa -dist_export -square_matrix -pid ${INPUT} pid_sq.csv
+        cmp pid_sq.csv ${REF_DIR}/pid_sq.csv
+      
+
+  ########################################################################################    
+      
+

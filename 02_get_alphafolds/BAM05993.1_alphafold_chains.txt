@@ -1,0 +1,1 @@
+BAM05993.1_alphafold.cif

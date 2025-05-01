@@ -1,0 +1,60 @@
+
+NOTES ON INSTALLING FAMSA AND FAMSA3DI ON A MAC LAPTOP
+
+I. Updating compilers and installing famsa
+* Had to go to the Apple website and download Xcode 13.4, the latest compatible with OSX 12.4
+* 10 GB zipfile, installs to 35 GB Xcode.app (!!) drag into /Applications
+* Also had to install Xcode Developer Tools for Xcode 13.4, <1 GB install
+* Once these were all done, the makefile for famsa and famsa3di worked fine.
+  - (I had to make sure the .o and .so files were deleted first)
+  - famsa3di source code, without .o and .so files, is at: /GitHub/str2phy/src/
+
+(Yes, it's absurd that it takes 40 GB of installations to get the little famsa program working, but that's computers for you)
+
+The command to install famsa3di was just:
+
+manually copy FAMSA_3di-2.2.2 from GitHub to /Downloads/FAMSA_3di-2.2.2
+cd /Downloads/FAMSA_3di-2.2.2
+make
+
+# test it locally:
+./famsa3di
+
+# Copy it to universally usable location
+sudo cp famsa3di /usr/local/bin/
+
+# Open a new terminal, type
+which famsa3di
+famsa3di
+
+
+II. Getting simple symbolic paths on the laptop:
+
+Since my code often refers to files on GitHub and the like, I want all my machines (and yours!) to be
+able to refer to the same file paths on your machines.
+
+I also want these file paths to be fairly short.  E.g.,
+
+Good: ~/GitHub/str2phy/Rsrc/str2phy_v1.R
+Bad:  /Systems/Volumes/Data/GitHub/str2phy/Rsrc/str2phy_v1.R
+
+The simplest way to do this is to put your GitHub local repository in your default user directory (represented by "~"),
+or create a symbolic link (see below) in your user directory to wherever you have stored your GitHub local repository.
+
+
+
+III. Command-line shortcut for ChimeraX
+
+Once you have ChimeraX downloaded and running, you can make a shortcut to run it from the Command-line:
+
+cd /usr/local/bin
+ln -s /Applications/ChimeraX-1.7.1.app/Contents/bin/ChimeraX chimerax 
+ln -s /Applications/ChimeraX-1.7.1.app/Contents/bin/ChimeraX chimx   
+ln -s /Applications/ChimeraX-1.7.1.app/Contents/bin/ChimeraX cx 
+
+Similar shortcuts should be done for e.g. famsa3di, foldseek, etc. (unless those programs have already been copied to /usr/local/bin/)
+
+
+
+
+
