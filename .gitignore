@@ -1,7 +1,7 @@
 # permanently remove .DS_Store from GitHub Desktop commits:
 # https://brandoncaples.com/martech/2022/git-remove-ds-store
 # Terminal in the root of the particular GitHub archive:
-# find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
+# find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
 #
 # 
 # open .gitignore
