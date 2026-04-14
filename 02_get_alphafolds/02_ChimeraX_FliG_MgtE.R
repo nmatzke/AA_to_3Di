@@ -37,9 +37,10 @@ library(rentrez)  # for rentrez::entrez_fetch(db="protein", id=MotA_seq_ids[1:17
 
 
 # Copy to str2phy
-#sourceall("/GitHub/bioinfRhints/Rsrc/")
-#source("/GitHub/bioinfRhints/Rsrc/protein_bioinf_v1.R") # for firstword
-sourceall("~/GitHub/AA_to_3Di/Rsrc/")
+#sourceall("~/GitHub/bioinfRhints/Rsrc/")
+#source("~/GitHub/bioinfRhints/Rsrc/protein_bioinf_v1.R") # for firstword
+#sourceall("~/GitHub/AA_to_3Di/Rsrc/")
+sourceall("~/GitHub/str2phy/Rsrc/")
 
 # Just for "linecount", not very important
 #source("~/GitHub/bioinfRhints/R/_genericR_v3.R")
@@ -177,7 +178,7 @@ moref(outdfs3_with_weak_hits_fn)
 
 
 # Once the .cif structure files are all available in:
-# /GitHub/AA_to_3Di/02_get_alphafolds
+# ~/GitHub/AA_to_3Di/02_get_alphafolds
 # ...generate the 3Di characters with the 
 # foldseek structureto3didescriptor command,
 # run via R functions
@@ -198,31 +199,9 @@ fns_dfs
 
 
 
-#######################################################
-# YOU CAN STOP HERE; ADDITIONAL COMMANDS ARE IN
-# TERMINAL TO MAKE AND RUN ALIGNMENTS ETC, THERE 
-# ARE SEVERAL OPTIONS
-#######################################################
-
-
- 
-
-
-
-
-#######################################################
-# Align the 3di sequences, using famsa3di
-#######################################################
-cmds='
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
-
-famsa3di seqs_3di.fasta seqs_3di_famsa3diAligned.fasta
-' # END cmds
-
-
 # Align the AAs to the famsa3di alignment
-dumps_wd = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/02_get_alphafolds/"
-wd = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/"
+dumps_wd = "~/GitHub/AA_to_3Di/02_get_alphafolds/"
+wd = "~/GitHub/AA_to_3Di/04_famsa3di/"
 setwd(wd)
 source("~/GitHub/AA_to_3Di/Rsrc/str2phy_v1.R")
 
@@ -234,26 +213,48 @@ fns = fns[TF]
 fns = slashslash(fns)
 fns
 
-# Get all the AA and 3di sequences from the dump files in the directory
+# Get all the AA and 3di sequences from the dump files in the directory,
+# merge into FASTAs
 outfn_AAs = "seqs_AAs_fromStructs.fasta"
 get_AA_FASTA_from_foldseek_dumps(fns, outfn=outfn_AAs)
 
 outfn_3dis = "seqs_3dis_fromStructs.fasta"
 get_3di_FASTA_from_foldseek_dumps(fns, outfn=outfn_3dis)
+ 
+
+
+
+
+#######################################################
+# Align the 3di sequences, using famsa3di
+#######################################################
+cmds='
+# Copy files for different alignment programs
+
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
+cp seqs_AAs_fromStructs.fasta ../03_mafft/
+cp seqs_AAs_fromStructs.fasta ../04_famsa3di/
+cp seqs_3dis_fromStructs.fasta ../04_famsa3di/
+
+cp ~/GitHub/AA_to_3Di/02_get_alphafolds/*.cif ../05_foldmason/
+
+cp ~/GitHub/AA_to_3Di/02_get_alphafolds/*.cif ../06_usalign/chains/
+
+' # END cmds
 
 
 #######################################################
 # Align with famsa3di
 #######################################################
 cmds='
-cd ~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 ls
 famsa3di seqs_3dis_fromStructs.fasta seqs_3di_famsa3diAligned.fasta
 
 '
 
 # Align the AAs against the famsa3di alignment of 3dis
-wd = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/"
+wd = "~/GitHub/AA_to_3Di/04_famsa3di/"
 setwd(wd)
 
 aligned_fn = "seqs_3di_famsa3diAligned.fasta"
@@ -271,7 +272,7 @@ moref(outfn)
 # Trim the alignments to just columns with >10% complete data
 #######################################################
 cmds='
-cd ~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 
 trimal -in seqs_AA_famsa3diAligned.fasta -out seqs_AA_famsa3diAligned_trim05.fasta -gt 0.05 -colnumbering | tee seqs_AA_famsa3diAligned_trim05_cols.txt
 
@@ -283,9 +284,9 @@ trimal -in seqs_3di_famsa3diAligned.fasta -out seqs_3di_famsa3diAligned_trim05.f
 
 # Foldmason alignment of structures
 cmds='
-cd ~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/04_foldmason
+cd ~/GitHub/AA_to_3Di/04_foldmason
 
-foldmason easy-msa ~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/02_get_alphafolds/*.cif FliG_MgtE_cifs_FMalign.fasta tmpFolder --report-mode 1
+foldmason easy-msa ~/GitHub/AA_to_3Di/02_get_alphafolds/*.cif FliG_MgtE_cifs_FMalign.fasta tmpFolder --report-mode 1
 '
 
 
@@ -293,23 +294,23 @@ foldmason easy-msa ~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/02_get_a
 #######################################################
 # Reorder the famsa3di alignments to match the foldmason alignment order
 #######################################################
-wd = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/"
+wd = "~/GitHub/AA_to_3Di/04_famsa3di/"
 setwd(wd)
 
-aln_with_good_order_fn = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/04_foldmason/FliG_MgtE_cifs_FMalign.fasta_aa.fa"
+aln_with_good_order_fn = "~/GitHub/AA_to_3Di/04_foldmason/FliG_MgtE_cifs_FMalign.fasta_aa.fa"
 aln_with_good_order = read_FASTA_safe(aln_with_good_order_fn, type="AA")
 tip_txt = names(aln_with_good_order)
 tip_txt
-AA_fn = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/seqs_AA_famsa3diAligned.fasta"
+AA_fn = "~/GitHub/AA_to_3Di/04_famsa3di/seqs_AA_famsa3diAligned.fasta"
 output = reorder_fasta(fasta_fn=AA_fn, tip_txt, outfn=NULL, type="AA")
 
-di3_fn = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/seqs_3di_famsa3diAligned.fasta"
+di3_fn = "~/GitHub/AA_to_3Di/04_famsa3di/seqs_3di_famsa3diAligned.fasta"
 output = reorder_fasta(fasta_fn=di3_fn, tip_txt, outfn=NULL, type="AA")
 
-AA_fn = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/seqs_AA_famsa3diAligned_trim05.fasta"
+AA_fn = "~/GitHub/AA_to_3Di/04_famsa3di/seqs_AA_famsa3diAligned_trim05.fasta"
 output = reorder_fasta(fasta_fn=AA_fn, tip_txt, outfn=NULL, type="AA")
 
-di3_fn = "~/GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/03_famsa3di/seqs_3di_famsa3diAligned_trim05.fasta"
+di3_fn = "~/GitHub/AA_to_3Di/04_famsa3di/seqs_3di_famsa3diAligned_trim05.fasta"
 output = reorder_fasta(fasta_fn=di3_fn, tip_txt, outfn=NULL, type="AA")
 
 
@@ -318,7 +319,7 @@ output = reorder_fasta(fasta_fn=di3_fn, tip_txt, outfn=NULL, type="AA")
 #######################################################
 # NJM says:
 # NICK STOPPED HERE - 2025-04-29
-# Files at: /GitHub/AA_to_3Di/ex/FliG_MgtE/2025-04-29_FliG_MgtE/
+# Files at: ~/GitHub/AA_to_3Di/
 #######################################################
 #######################################################
 
@@ -348,7 +349,7 @@ terminal_cmds='
 # -ter 2        -- 2: (default) only align the first chain
 # -TMscore 0 	  -- 0: (default) sequence independent structure alignment
 
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/
+cd ~/GitHub/AA_to_3Di/06_usalign/
 mkdir chains
 
 # Put all the matching filenames into a text file
@@ -402,11 +403,11 @@ wc -l usalign_test3.fasta  # 36, which equals 18 * 2
 library(ape)
 library(seqinr)
 library(BioGeoBEARS)
-sourceall("/GitHub/bioinfRhints/Rsrc")
-source("/GitHub/AA_to_3Di/Rsrc/str2phy_v1.R")
+sourceall("~/GitHub/bioinfRhints/Rsrc")
+source("~/GitHub/AA_to_3Di/Rsrc/str2phy_v1.R")
 
 
-wd = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/"
+wd = "~/GitHub/AA_to_3Di/"
 setwd(wd)
 list.files()
 
@@ -415,7 +416,7 @@ fasta_fn = "seqs.fasta"
 
 # Aligned fasta
 usaln_fn = "usalign_test3.fasta"
-di3s_dir = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/"
+di3s_dir = "~/GitHub/AA_to_3Di/"
 di3_outfn = "seqs_3di_aln.fasta"
 
 di3_alignment = align_3dis(usaln_fn, di3s_dir, di3_outfn, pattern_3di_fn="*_3di.fasta")
@@ -436,7 +437,7 @@ di3_alignment
 # Trim the alignments to just columns with >35% complete data
 #######################################################
 cmds='
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 
 trimal -in seqs_AA_famsa3diAligned.fasta -out seqs_AA_famsa3diAligned_trim35.fasta -gt 0.35 -colnumbering | tee seqs_AA_famsa3diAligned_trim35_cols.txt
 
@@ -447,8 +448,9 @@ trimal -in seqs_3di_famsa3diAligned.fasta -out seqs_3di_famsa3diAligned_trim35.f
 #######################################################
 # Horizontally concatenate 2 alignment files
 #######################################################
-fn1 = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/seqs_AA_famsa3diAligned_trim35.fasta"
-fn2 = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/seqs_3di_famsa3diAligned_trim35.fasta"
+setwd("~/GitHub/AA_to_3Di/04_famsa3di/")
+fn1 = "~/GitHub/AA_to_3Di/04_famsa3di/seqs_AA_famsa3diAligned_trim35.fasta"
+fn2 = "~/GitHub/AA_to_3Di/04_famsa3di/seqs_3di_famsa3diAligned_trim35.fasta"
 fn3 = "seqs_AA3di_famsa3diAligned.fasta"
 merged_df = hcat_align_fns(fn1, fn2, fn3)
 moref(fn3)
@@ -462,41 +464,42 @@ merged_df
 
 # Trim35 = only keep columns with 35% or higher sites 
 
+iqtree_cmds='
 # AA sequences
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 mkdir iqtree_AAsTrim35
 cp seqs_AA_famsa3diAligned_trim35.fasta iqtree_AAsTrim35/seqs_AA_famsa3diAligned_trim35.fasta
 cp seqs_AA_famsa3diAligned_trim35.fasta iqtree_AAsTrim35/seqs.fasta
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_AAsTrim35/ 
+cd ~/GitHub/AA_to_3Di/04_famsa3di/iqtree_AAsTrim35/ 
 iqtree -s seqs.fasta -mset 3DI,Blosum62,Dayhoff,DCMut,JTT,JTTDCMut,LG,Poisson,Poisson+FQ,Poisson,PMB,WAG,EX2,EX3,EHO,EX_EHO -mfreq FU,F -mrate E,G,R --ufboot 1000 -alrt 1000 -bnni --redo | tee seqs_so1.txt &
 
 
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 mkdir iqtree_AAsTrim35_allmodels
 cp seqs_AA_famsa3diAligned_trim35.fasta iqtree_AAsTrim35_allmodels/seqs_AA_famsa3diAligned_trim35.fasta
 cp seqs_AA_famsa3diAligned_trim35.fasta iqtree_AAsTrim35_allmodels/seqs.fasta
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_AAsTrim35_allmodels/ 
+cd ~/GitHub/AA_to_3Di/04_famsa3di/iqtree_AAsTrim35_allmodels/ 
 iqtree -s seqs.fasta -madd 3DI -mdef 3DI.nexus  --ufboot 1000 -alrt 1000 -bnni --redo | tee seqs_so1.txt &
 
 
 # 3di sequences
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 mkdir iqtree_3disTrim35
 cp seqs_3di_famsa3diAligned_trim35.fasta iqtree_3disTrim35/seqs_3di_famsa3diAligned_trim35.fasta
 cp seqs_3di_famsa3diAligned_trim35.fasta iqtree_3disTrim35/seqs.fasta
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_3disTrim35/ 
+cd ~/GitHub/AA_to_3Di/04_famsa3di/iqtree_3disTrim35/ 
 iqtree -s seqs.fasta -mset 3DI,Blosum62,Dayhoff,DCMut,JTT,JTTDCMut,LG,Poisson,Poisson+FQ,Poisson,PMB,WAG,EX2,EX3,EHO,EX_EHO -mfreq FU,F -mrate E,G,R --ufboot 1000 -alrt 1000 -bnni --redo | tee seqs_so1.txt &
 
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 mkdir iqtree_3disTrim35_allmodels
 cp seqs_3di_famsa3diAligned_trim35.fasta iqtree_3disTrim35_allmodels/seqs_3di_famsa3diAligned_trim35.fasta
 cp seqs_3di_famsa3diAligned_trim35.fasta iqtree_3disTrim35_allmodels/seqs.fasta
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_3disTrim35_allmodels/ 
+cd ~/GitHub/AA_to_3Di/04_famsa3di/iqtree_3disTrim35_allmodels/ 
 iqtree -s seqs.fasta -madd 3DI -mdef 3DI.nexus  --ufboot 1000 -alrt 1000 -bnni --redo | tee seqs_so1.txt &
 
 
 # BOTH sequences
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 cp seqs_AA3di_famsa3diAligned.fasta seqs_BOTH_famsa3diAligned.fasta
 
 mkdir iqtree_BOTHsTrim35
@@ -505,20 +508,20 @@ cp seqs_BOTH_famsa3diAligned.fasta iqtree_BOTHsTrim35/seqs.fasta
 cp BOTHp.raxml iqtree_BOTHsTrim35/
 cp 3DI.nexus iqtree_BOTHsTrim35/
 cp 3DI iqtree_BOTHsTrim35/
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_BOTHsTrim35/ 
+cd ~/GitHub/AA_to_3Di/04_famsa3di/iqtree_BOTHsTrim35/ 
 iqtree -s seqs.fasta -spp BOTHp.raxml -m MFP+MERGE -madd 3DI -mdef 3DI.nexus -mset 3DI,Blosum62,Dayhoff,DCMut,JTT,JTTDCMut,LG,Poisson,Poisson+FQ,Poisson,PMB,WAG,EX2,EX3,EHO,EX_EHO -mfreq FU,F -mrate E,G,R --ufboot 1000 -alrt 1000 -bnni --redo | tee seqs_so1.txt &
 
 
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/
+cd ~/GitHub/AA_to_3Di/04_famsa3di/
 mkdir iqtree_BOTHsTrim35_allmodels
 cp seqs_BOTH_famsa3diAligned.fasta iqtree_BOTHsTrim35_allmodels/seqs_BOTH_famsa3diAligned.fasta
 cp seqs_BOTH_famsa3diAligned.fasta iqtree_BOTHsTrim35_allmodels/seqs.fasta
 cp BOTHp.raxml iqtree_BOTHsTrim35_allmodels/
 cp 3DI.nexus iqtree_BOTHsTrim35_allmodels/
 cp 3DI iqtree_BOTHsTrim35_allmodels/
-cd /GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_BOTHsTrim35_allmodels/ 
+cd ~/GitHub/AA_to_3Di/04_famsa3di/iqtree_BOTHsTrim35_allmodels/ 
 iqtree -s seqs.fasta -spp BOTHp.raxml -m MFP+MERGE -madd 3DI -mdef 3DI.nexus -mfreq FU,F -mrate E,G,R  --ufboot 1000 -alrt 1000 -bnni --redo | tee seqs_so1.txt &
-
+'
 
 
 
@@ -528,19 +531,19 @@ iqtree -s seqs.fasta -spp BOTHp.raxml -m MFP+MERGE -madd 3DI -mdef 3DI.nexus -mf
 # We can also read the IQtree output to tables
 #######################################################
 
-source("/GitHub/AA_to_3Di/Rsrc/parsing_iqtree_file_v1.R")
+source("~/GitHub/AA_to_3Di/Rsrc/parsing_iqtree_file_v1.R")
 
 start_txt = "List of models sorted by BIC scores: "
 calc_extra = TRUE  # back-calculate k and n
 partitioned_TF=FALSE
 
 # AAs
-iqtree_fn = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_AAsTrim35/seqs.fasta.iqtree"
+iqtree_fn = "~/GitHub/AA_to_3Di/04_famsa3di/iqtree_AAsTrim35/seqs.fasta.iqtree"
 AICs_AA_somemodels_df = read_iqtree_model_scores(iqtree_fn, start_txt="List of models sorted by BIC scores: ", calc_extra=TRUE, partitioned_TF=FALSE)
 conditional_format_table(AICs_AA_somemodels_df)
 tail(cft(AICs_AA_somemodels_df))
 
-iqtree_fn = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_AAsTrim35_allmodels/seqs.fasta.iqtree"
+iqtree_fn = "~/GitHub/AA_to_3Di/04_famsa3di/iqtree_AAsTrim35_allmodels/seqs.fasta.iqtree"
 AICs_AA_allmodels_df = read_iqtree_model_scores(iqtree_fn, start_txt="List of models sorted by BIC scores: ", calc_extra=TRUE, partitioned_TF=FALSE)
 conditional_format_table(AICs_AA_allmodels_df)
 tail(cft(AICs_AA_allmodels_df))
@@ -548,12 +551,12 @@ printall(cft(AICs_AA_allmodels_df))
 
 
 # 3dis
-iqtree_fn = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_3disTrim35/seqs.fasta.iqtree"
+iqtree_fn = "~/GitHub/AA_to_3Di/04_famsa3di/iqtree_3disTrim35/seqs.fasta.iqtree"
 AICs_3di_somemodels_df = read_iqtree_model_scores(iqtree_fn, start_txt="List of models sorted by BIC scores: ", calc_extra=TRUE, partitioned_TF=FALSE)
 conditional_format_table(AICs_3di_somemodels_df)
 tail(cft(AICs_3di_somemodels_df))
 
-iqtree_fn = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_3disTrim35_allmodels/seqs.fasta.iqtree"
+iqtree_fn = "~/GitHub/AA_to_3Di/04_famsa3di/iqtree_3disTrim35_allmodels/seqs.fasta.iqtree"
 AICs_3di_allmodels_df = read_iqtree_model_scores(iqtree_fn, start_txt="List of models sorted by BIC scores: ", calc_extra=TRUE, partitioned_TF=FALSE)
 conditional_format_table(AICs_3di_allmodels_df)
 tail(cft(AICs_3di_allmodels_df))
@@ -565,12 +568,12 @@ start_txt = "List of models sorted by BIC scores: "
 calc_extra = TRUE  # back-calculate k and n
 partitioned_TF=TRUE
 
-iqtree_fn = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_BOTHsTrim35/BOTHp.raxml.iqtree"
+iqtree_fn = "~/GitHub/AA_to_3Di/04_famsa3di/iqtree_BOTHsTrim35/BOTHp.raxml.iqtree"
 AICs_BOTH_somemodels_df = read_iqtree_model_scores(iqtree_fn, start_txt="List of best-fit models per partition:", calc_extra=TRUE, partitioned_TF=TRUE)
 conditional_format_table(AICs_BOTH_somemodels_df)
 tail(cft(AICs_BOTH_somemodels_df))
 
-iqtree_fn = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_BOTHsTrim35_allmodels/BOTHp.raxml.iqtree"
+iqtree_fn = "~/GitHub/AA_to_3Di/04_famsa3di/iqtree_BOTHsTrim35_allmodels/BOTHp.raxml.iqtree"
 AICs_BOTH_allmodels_df = read_iqtree_model_scores(iqtree_fn, start_txt="List of best-fit models per partition:", calc_extra=TRUE, partitioned_TF=TRUE)
 conditional_format_table(AICs_BOTH_allmodels_df)
 tail(cft(AICs_BOTH_allmodels_df))
@@ -586,10 +589,10 @@ printall(cft(AICs_BOTH_allmodels_df))
 #######################################################
 # Plotting trees with R scripts
 #######################################################
-wd = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/"
+wd = "~/GitHub/AA_to_3Di/04_famsa3di/"
 setwd(wd)
 
-iqtree_fn = "/GitHub/AA_to_3Di/ex/simple/02_ChimeraX_seqs/03_famsa3di/iqtree_BOTHsTrim35/BOTHp.raxml.treefile"
+iqtree_fn = "~/GitHub/AA_to_3Di/04_famsa3di/iqtree_BOTHsTrim35/BOTHp.raxml.treefile"
 
 # Read the tree with APE
 tr = ape::read.tree(iqtree_fn)
@@ -605,14 +608,14 @@ add.scale.bar()
 # It would be better to have informative labels. 
 # Generally these are best kept in e.g. Excel, since alignment & phylogenetics programs 
 # often cut the label information. 
-xlsfn = "/GitHub/AA_to_3Di/ex/simple/18_ZorABs.xlsx"
+xlsfn = "~/GitHub/AA_to_3Di/ex/simple/18_ZorABs.xlsx"
 xls = openxlsx::read.xlsx(xlsxFile=xlsfn, sheet=1, startRow=2, colNames=TRUE)
 head(xls)
 dim(xls)
 
 
 # Functions for editing tipnames etc.
-source("/GitHub/AA_to_3Di/Rsrc/seqnames_v1.R")
+source("~/GitHub/AA_to_3Di/Rsrc/seqnames_v1.R")
 
 gidskey = xls$protein.accession
 newmatch = zora_names = fixnames(xls$nameA)
@@ -629,7 +632,7 @@ plot(tr2)
 add.scale.bar()
 
 
-source("/GitHub/AA_to_3Di/Rsrc/seqnames_v1.R")
+source("~/GitHub/AA_to_3Di/Rsrc/seqnames_v1.R")
 
 pdffn = "ZorA.pdf"
 pdf(file=pdffn, width=18, height=12)
