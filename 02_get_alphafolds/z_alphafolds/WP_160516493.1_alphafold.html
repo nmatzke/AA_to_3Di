@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<title> ChimeraX Log </title>
+<script type="text/javascript">
+window.onload = function() {
+  cxlinks_base="http://www.rbvi.ucsf.edu/chimerax/docs/"
+  if(!window.navigator.userAgent.includes("ChimeraX")){
+    window.onclick = function(e){
+      if(e.target.tagName.toLowerCase()!="a")
+	return true;
+      var url=e.target.getAttribute("href").toLowerCase();
+      if(url.startsWith("help:")){
+	window.location.href = cxlinks_base + url.substring(5);
+	return false;
+      }
+      if(url.startsWith("cxcmd:")){
+	alert("This link only works in a ChimeraX browser and would execute a command.");
+	return false;
+      }
+      return true;
+    }
+    var ls=document.links;
+    for(var i=0;i<ls.length;i++){
+      var link=ls[i];
+      var url=link.getAttribute("href").toLowerCase();
+      if(url.startsWith("cxcmd:"))
+	link.style.color="darkred";
+    }
+  }
+};
+</script>
+</head>
+<h1> ChimeraX Log </h1>
+<style>
+
+.cxcmd {
+    display: block;
+    font-weight: bold;
+    margin-top: .5em;
+    background-color: #ddd;
+}
+a.no_underline {
+    text-decoration: none;
+}
+
+.cxcmd_as_doc {
+    display: none;
+}
+.cxcmd_as_cmd {
+    display: inline;
+}
+</style>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/alphafold.html#match">alphafold match</a> MNKNKLLSFLREASHPAELQSVAAQIKSIHPADLADVLNELNSNTILSLLKLLDPHTSSTIFIYLDEDRQEILLQEMPRELIPELFKCMPSDERADLYNRMEQNVKHKLLPILAPHERDDILRMSSFPDSSTGSEATSDFVSVSPDMTVTQALEHIRMTATDKETVYIIYVINDRSHLCGTVSLRELVLARDHQKISDIMRPDPIFARADCPKEKAAELIRHYDLLALPVIDGADKMIGIVTIDDAMDIEKEQDATQLARFGGTAVGDGPDLDILSSPLSRIFQVRVFWLALLTIFGVITSTFVASQEEVLSEVIILAAFLAPVIDMGGNTGSQSATLVIRGMALGDLTVKWKYVWLVIRRELPVVIALGITISLLELILAWFSKGIGIDVMLVVGLSMLVCTVLGGVIGVVLPFIARRIGTDPATLSSPLITSIMDLLGVFIYFGFAWFFFGDLL</div><div class="cxcmd_as_cmd"><a href="cxcmd:alphafold match MNKNKLLSFLREASHPAELQSVAAQIKSIHPADLADVLNELNSNTILSLLKLLDPHTSSTIFIYLDEDRQEILLQEMPRELIPELFKCMPSDERADLYNRMEQNVKHKLLPILAPHERDDILRMSSFPDSSTGSEATSDFVSVSPDMTVTQALEHIRMTATDKETVYIIYVINDRSHLCGTVSLRELVLARDHQKISDIMRPDPIFARADCPKEKAAELIRHYDLLALPVIDGADKMIGIVTIDDAMDIEKEQDATQLARFGGTAVGDGPDLDILSSPLSRIFQVRVFWLALLTIFGVITSTFVASQEEVLSEVIILAAFLAPVIDMGGNTGSQSATLVIRGMALGDLTVKWKYVWLVIRRELPVVIALGITISLLELILAWFSKGIGIDVMLVVGLSMLVCTVLGGVIGVVLPFIARRIGTDPATLSSPLITSIMDLLGVFIYFGFAWFFFGDLL">alphafold match MNKNKLLSFLREASHPAELQSVAAQIKSIHPADLADVLNELNSNTILSLLKLLDPHTSSTIFIYLDEDRQEILLQEMPRELIPELFKCMPSDERADLYNRMEQNVKHKLLPILAPHERDDILRMSSFPDSSTGSEATSDFVSVSPDMTVTQALEHIRMTATDKETVYIIYVINDRSHLCGTVSLRELVLARDHQKISDIMRPDPIFARADCPKEKAAELIRHYDLLALPVIDGADKMIGIVTIDDAMDIEKEQDATQLARFGGTAVGDGPDLDILSSPLSRIFQVRVFWLALLTIFGVITSTFVASQEEVLSEVIILAAFLAPVIDMGGNTGSQSATLVIRGMALGDLTVKWKYVWLVIRRELPVVIALGITISLLELILAWFSKGIGIDVMLVVGLSMLVCTVLGGVIGVVLPFIARRIGTDPATLSSPLITSIMDLLGVFIYFGFAWFFFGDLL</a></div></div><p style="color:darkorange">Sequence search found 1 AlphaFold id that do not have AlphaFold database models: A0A285KC01 (1 sequences)<br>
+</p><p style="color:darkorange">No AlphaFold model with similar sequence for 1 sequences<br>
+</p>Opened 0 AlphaFold model<br>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/log.html#save">log save</a> WP_160516493.1_alphafold.html executableLinks true</div><div class="cxcmd_as_cmd"><a href="cxcmd:log save WP_160516493.1_alphafold.html executableLinks true">log save WP_160516493.1_alphafold.html executableLinks true</a></div></div></body>
+</html>

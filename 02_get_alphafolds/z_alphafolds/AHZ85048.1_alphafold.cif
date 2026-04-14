@@ -39,39 +39,39 @@ loop_
 _citation_author.citation_id
 _citation_author.name
 _citation_author.ordinal
-primary  "Jumper, John"               1  
-primary  "Evans, Richard"             2  
-primary  "Pritzel, Alexander"         3  
-primary  "Green, Tim"                 4  
-primary  "Figurnov, Michael"          5  
-primary  "Ronneberger, Olaf"          6  
-primary  "Tunyasuvunakool, Kathryn"   7  
-primary  "Bates, Russ"                8  
-primary  "Zidek, Augustin"            9  
-primary  "Potapenko, Anna"            10 
-primary  "Bridgland, Alex"            11 
-primary  "Meyer, Clemens"             12 
-primary  "Kohl, Simon A. A."          13 
-primary  "Ballard, Andrew J."         14 
-primary  "Cowie, Andrew"              15 
-primary  "Romera-Paredes, Bernardino" 16 
-primary  "Nikolov, Stanislav"         17 
-primary  "Jain, Rishub"               18 
-primary  "Adler, Jonas"               19 
-primary  "Back, Trevor"               20 
-primary  "Petersen, Stig"             21 
-primary  "Reiman, David"              22 
-primary  "Clancy, Ellen"              23 
-primary  "Zielinski, Michal"          24 
-primary  "Steinegger, Martin"         25 
-primary  "Pacholska, Michalina"       26 
-primary  "Berghammer, Tamas"          27 
-primary  "Silver, David"              28 
-primary  "Vinyals, Oriol"             29 
-primary  "Senior, Andrew W."          30 
-primary  "Kavukcuoglu, Koray"         31 
-primary  "Kohli, Pushmeet"            32 
-primary  "Hassabis, Demis"            33 
+1        "Jumper, John"               1  
+1        "Evans, Richard"             2  
+1        "Pritzel, Alexander"         3  
+1        "Green, Tim"                 4  
+1        "Figurnov, Michael"          5  
+1        "Ronneberger, Olaf"          6  
+1        "Tunyasuvunakool, Kathryn"   7  
+1        "Bates, Russ"                8  
+1        "Zidek, Augustin"            9  
+1        "Potapenko, Anna"            10 
+1        "Bridgland, Alex"            11 
+1        "Meyer, Clemens"             12 
+1        "Kohl, Simon A. A."          13 
+1        "Ballard, Andrew J."         14 
+1        "Cowie, Andrew"              15 
+1        "Romera-Paredes, Bernardino" 16 
+1        "Nikolov, Stanislav"         17 
+1        "Jain, Rishub"               18 
+1        "Adler, Jonas"               19 
+1        "Back, Trevor"               20 
+1        "Petersen, Stig"             21 
+1        "Reiman, David"              22 
+1        "Clancy, Ellen"              23 
+1        "Zielinski, Michal"          24 
+1        "Steinegger, Martin"         25 
+1        "Pacholska, Michalina"       26 
+1        "Berghammer, Tamas"          27 
+1        "Silver, David"              28 
+1        "Vinyals, Oriol"             29 
+1        "Senior, Andrew W."          30 
+1        "Kavukcuoglu, Koray"         31 
+1        "Kohli, Pushmeet"            32 
+1        "Hassabis, Demis"            33 
 chimerax "Pettersen EF"               1  
 chimerax "Goddard TD"                 2  
 chimerax "Huang CC"                   3  
@@ -94,7 +94,7 @@ _software.os
 _software.citation_id
 other            ? "Structure prediction" AlphaFold       1 package v2.0     ?                                   ?     ?        
 other            ? "Secondary structure"  dssp            2 library 4        ?                                   ?     ?        
-"model building" ? ?                      "UCSF ChimeraX" 3 package 1.11/v10 https://www.rbvi.ucsf.edu/chimerax/ macOS chimerax 
+"model building" ? ?                      "UCSF ChimeraX" 3 package 1.10/v10 https://www.rbvi.ucsf.edu/chimerax/ macOS chimerax 
 #
 loop_
 _chem_comp.id

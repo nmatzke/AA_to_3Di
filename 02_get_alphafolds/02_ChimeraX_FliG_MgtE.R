@@ -92,6 +92,7 @@ for (i in 1:numseqs)
 	
 	# Just get the CIF files
 	outdf = fasta_to_alphafold_cifs(fasta_fn=fasta_fn, seqnum=i, chimeraX_install=2025)
+	#outdf = fasta_to_alphafold_cifs_modified(fasta_fn=fasta_fn, seqnum=i, chimeraX_install=2025, timeout=60)
 	#tmpdf = fasta_to_alphafold_cifs(fasta_fn=fasta_fn, seqnum=i, chimeraX_install=2024)
 	print(outdf[1:5])
 	outdfs = rbind(outdfs, outdf)

@@ -458,6 +458,210 @@ aa_to_alphafold_cif <- function(chars, gid, timeout=30, chimeraX_install=2024)
 	} # END aa_to_alphafold_cif
 
 
+
+
+# Download the cif files and metadata via ChimeraX
+# (you must have ChimeraX open)
+# Then DON'T convert to 3Di characters
+fasta_to_alphafold_cifs_modified <- function(fasta_fn, seqnum=1, chimeraX_install=2025, timeout=30)
+{
+  seqs = ape::read.FASTA(fasta_fn, type="AA")
+  seqs
+  
+  header = names(seqs)[[seqnum]]
+  gid = firstword(header)
+  # Replace any "|" with "_"
+  gid = gsub(pattern="\\|", replacement="_", x=gid)
+  
+  html_fn = paste0(gid, "_alphafold.html")
+  cif_fn = paste0(gid, "_alphafold.cif")
+  table_fn = paste0(gid, "_alphafold_table.html")
+  
+  if (file.exists(html_fn) == TRUE)
+  {
+    # Check for "no hit"
+    TF = grepl(pattern="No AlphaFold model with similar sequence", x=readLines(html_fn))
+    if (sum(TF) > 0)
+    {
+      fns = c("NONE", NA, 0.0, 0.0, NA, html_fn, NA, NA, NA, NA, NA, NA)
+      outdf = as.data.frame(matrix(fns, nrow=1), stringsAsFactors=FALSE)
+      row.names(outdf) = NULL
+      names(outdf) = c("AlphaFold Model", "Query Sequence", "Identity %", "Coverage %", "cif_fn", "html_fn", "table_fn", "dump_fn", "chain_names_fn", "di3_fn", "aa_fn", "both_fn")
+      outdf = cbind(seqnum, outdf)
+      return(outdf)
+    }
+    
+    
+    alphafold_df = alphafold_html_to_df(html_fn, table_fn, chimeraX_install=chimeraX_install)
+    alphafold_df
+    
+    # Structure to 3di and fasta
+    dump_fn = gsub(pattern="\\.cif", replacement="_3di.dump", x=cif_fn)
+    chain_names_fn = gsub(pattern="\\.cif", replacement="_chains.txt", x=cif_fn)
+    di3_fn = gsub(pattern="\\.cif", replacement="_3di.fasta", x=cif_fn)
+    aa_fn = gsub(pattern="\\.cif", replacement="_aa.fasta", x=cif_fn)
+    both_fn = gsub(pattern="\\.cif", replacement="_both.fasta", x=cif_fn)
+    
+    fns = c(cif_fn, html_fn, table_fn, dump_fn, chain_names_fn, di3_fn, aa_fn, both_fn)
+    fns_df = as.data.frame(matrix(fns, nrow=1), stringsAsFactors=FALSE)
+    row.names(fns_df) = NULL
+    names(fns_df) = c("cif_fn", "html_fn", "table_fn", "dump_fn", "chain_names_fn", "di3_fn", "aa_fn", "both_fn")
+    
+    outdf = cbind(alphafold_df, fns_df)
+    outdf = cbind(seqnum, outdf)
+  } else {
+    # If the HTML file doesn't exist
+    chars = as.character(seqs)[[seqnum]]
+    # Download structure, and *DON'T* convert to 3Di characters
+    outdf = aa_to_alphafold_cif_modified(chars, gid, timeout=timeout)
+    outdf = cbind(seqnum, outdf)
+  } # END if (file.exists(html_fn) == TRUE)
+  return(outdf)
+} # END fasta_to_alphafold_cifs_modified
+
+
+# Take a sequence, then:
+# Download a cif file and metadata via ChimeraX
+# (you must have ChimeraX open)
+# Then DON'T convert to 3Di characters
+aa_to_alphafold_cif_modified <- function(chars, gid, timeout=30, chimeraX_install=2024)
+{
+  aastr = toupper(paste0(chars, collapse="", sep=""))
+  aastr
+  
+  html_fn = paste0(gid, "_alphafold.html")
+  cif_fn = paste0(gid, "_alphafold.cif")
+  table_fn = paste0(gid, "_alphafold_table.html")
+  
+  # Download closest-match alphafold structure
+  keep_going = TRUE
+  start_time = Sys.time()
+  first_time = TRUE
+  retried <- FALSE
+  while(keep_going == TRUE)
+  {
+    if (first_time == TRUE)
+    {
+      cmd_txt = paste0('ChimeraX --cmd "alphafold match ', aastr, '; log save ', html_fn, ' executableLinks true; save ', cif_fn, ' relModel #1; close #1; quit;"')
+      cmd_txt
+      #result = try(system(cmd_txt))
+      first_time = FALSE
+      system(cmd_txt, wait=TRUE, timeout=timeout)
+    }
+    
+    if (file.exists(cif_fn) == TRUE)
+    {
+      keep_going = FALSE
+      break()
+    }
+    else {
+      # Function: extract_uniprot_id
+      # Purpose: Given the text of a ChimeraX log, return the UniProt ID if found
+      extract_uniprot_id <- function(log_text) {
+        # Ensure it's a single string (collapse if you read lines)
+        
+        log_text <- paste(log_text, collapse = "\n")
+        
+        # Normalize encoding and remove tricky whitespace
+        log_text <- iconv(log_text, to = "UTF-8")
+        log_text <- gsub("[\u00A0\r\n\t]+", " ", log_text, perl = TRUE)
+        
+        # Look for the key phrase that precedes the UniProt ID
+        pattern_phrase <- "AlphaFold id that do not have AlphaFold database models:"
+        
+        pattern <- "(?i)AlphaFold id that do not have AlphaFold database models:[[:space:]]*([A-Z0-9]{6,10})"
+        
+        m <- regexpr(pattern, log_text, perl = TRUE)
+        if (m[1] != -1) {
+          id <- regmatches(log_text, m)
+          # Extract just the UniProt-like part
+          id <- sub(".*models:[[:space:]]*", "", id)
+          id <- sub("[^A-Z0-9].*", "", id)
+          return(id)
+        } else {
+            return(NA)
+          }
+      }
+      
+      log_text <- readLines(html_fn, warn = FALSE)
+      
+      uniprot_id <- extract_uniprot_id(log_text)
+      cat("Extracted UniProt ID:", uniprot_id, "\n")
+      
+    }
+    if (!is.na(uniprot_id)) {
+      cmd_txt = paste0('ChimeraX --cmd "alphafold match ', uniprot_id, '; log save ', html_fn, ' executableLinks true; save ', cif_fn, ' relModel #1; close #1; quit;"')
+      cmd_txt
+      #result = try(system(cmd_txt))
+      first_time = FALSE
+      system(cmd_txt, wait=TRUE, timeout=timeout)
+      retried <- TRUE
+    }
+    if (file.exists(cif_fn) == TRUE )
+    {
+      keep_going = FALSE
+      break()
+    }else {
+    current_time = Sys.time()
+    elapsed_time = as.numeric(current_time - start_time)
+    if (elapsed_time > (timeout+5) || is.na(uniprot_id) || retried)
+    {
+      #outdf = rep(NA, times=12)
+      
+      fns = c("NONE", NA, 0.0, 0.0, NA, html_fn, NA, NA, NA, NA, NA, NA)
+      outdf = as.data.frame(matrix(fns, nrow=1), stringsAsFactors=FALSE)
+      row.names(outdf) = NULL
+      names(outdf) = c("AlphaFold Model", "Query Sequence", "Identity %", "Coverage %", "cif_fn", "html_fn", "table_fn", "dump_fn", "chain_names_fn", "di3_fn", "aa_fn", "both_fn")
+      
+      
+      return(outdf)
+      keep_going = FALSE
+    }
+    }
+  } # END while-loop
+  
+  # Wait until cif_fn exists
+  # keep_going_TF = TRUE
+  # cat("\nRunning: ", cmd_txt)
+  # cat("\n")
+  # while (keep_going_TF == TRUE)
+  # {
+  #   if ( (file.exists(cif_fn) == TRUE) && (file.exists(html_fn) == TRUE) )
+  #   {
+  #     keep_going_TF = FALSE
+  #   }
+  # }
+  cat("...done.\n")
+  if  (file.exists(cif_fn) == TRUE) {
+  
+  alphafold_df = alphafold_html_to_df(html_fn, table_fn, chimeraX_install=chimeraX_install)
+  alphafold_df
+  
+  # Structure to 3di and fasta
+  dump_fn = gsub(pattern="\\.cif", replacement="_3di.dump", x=cif_fn)
+  chain_names_fn = gsub(pattern="\\.cif", replacement="_chains.txt", x=cif_fn)
+  di3_fn = gsub(pattern="\\.cif", replacement="_3di.fasta", x=cif_fn)
+  aa_fn = gsub(pattern="\\.cif", replacement="_aa.fasta", x=cif_fn)
+  both_fn = gsub(pattern="\\.cif", replacement="_both.fasta", x=cif_fn)
+  
+  # SKIP running the commands to convert to 3Di
+  
+  # fns
+  fns = c(cif_fn, html_fn, table_fn, dump_fn, chain_names_fn, di3_fn, aa_fn, both_fn)
+  fns_df = as.data.frame(matrix(fns, nrow=1), stringsAsFactors=FALSE)
+  row.names(fns_df) = NULL
+  names(fns_df) = c("cif_fn", "html_fn", "table_fn", "dump_fn", "chain_names_fn", "di3_fn", "aa_fn", "both_fn")
+  
+  outdf = cbind(alphafold_df, fns_df)
+  outdf
+  
+  return(outdf)
+  }
+} # END aa_to_alphafold_cif_modified
+
+
+
+
 # Rather than doing ChimeraX and 3Di together, just take a structure
 # and generate 3Di characters
 structures_to_3dis <- function(structure_fns, suffix=".cif")
