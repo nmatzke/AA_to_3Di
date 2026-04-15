@@ -297,7 +297,7 @@ foldmason easy-msa ~/GitHub/AA_to_3Di/02_get_alphafolds/*.cif FliG_MgtE_cifs_FMa
 wd = "~/GitHub/AA_to_3Di/04_famsa3di/"
 setwd(wd)
 
-aln_with_good_order_fn = "~/GitHub/AA_to_3Di/04_foldmason/FliG_MgtE_cifs_FMalign.fasta_aa.fa"
+aln_with_good_order_fn = "~/GitHub/AA_to_3Di/05_foldmason/fm_align.fasta_aa.fa"
 aln_with_good_order = read_FASTA_safe(aln_with_good_order_fn, type="AA")
 tip_txt = names(aln_with_good_order)
 tip_txt
@@ -403,7 +403,7 @@ wc -l usalign_test3.fasta  # 36, which equals 18 * 2
 library(ape)
 library(seqinr)
 library(BioGeoBEARS)
-sourceall("~/GitHub/bioinfRhints/Rsrc")
+#sourceall("~/GitHub/bioinfRhints/Rsrc")
 source("~/GitHub/AA_to_3Di/Rsrc/str2phy_v1.R")
 
 
