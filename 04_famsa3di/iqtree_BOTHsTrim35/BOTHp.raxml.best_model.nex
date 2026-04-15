@@ -1,0 +1,8 @@
+#nexus
+begin sets;
+  charset part1 = AA, 1-512;
+  charset part2 = AA, 513-1024;
+  charpartition mymodels =
+    LG+F+G4{1.95895}: part1{43.569},
+    3DI+F+G4{1.17816}: part2{8.98939};
+end;

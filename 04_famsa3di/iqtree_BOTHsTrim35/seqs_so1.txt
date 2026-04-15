@@ -3,9 +3,9 @@ Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
 Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
 
 Host:    rsb0001363.local (AVX2, FMA3, 8 GB RAM)
-Command: iqtree -s seqs.fasta -spp BOTHp.raxml -m MFP+MERGE -madd 3DI -mdef 3DI.nexus -mset 3DI,Blosum62,Dayhoff,DCMut,JTT,JTTDCMut,LG,Poisson,Poisson+FQ,Poisson,PMB,WAG,EX2,EX3,EHO,EX_EHO -mfreq FU,F -mrate E,G,R --ufboot 1000 -bnni --redo
-Seed:    336203 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Wed Apr 15 14:47:11 2026
+Command: iqtree -s seqs.fasta -spp BOTHp.raxml -m MFP+MERGE -madd 3DI -mdef 3DI.nexus -mset 3DI,Blosum62,Dayhoff,LG,Poisson,Poisson+FQ,Poisson,WAG -mfreq FU,F -mrate E,G --ufboot 1000 -alrt 1000 -bnni --redo
+Seed:    759468 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Apr 15 14:57:42 2026
 Kernel:  AVX+FMA - 1 threads (4 CPU cores detected)
 
 HINT: Use -nt option to specify number of threads because your CPU has 4 cores!
@@ -13,13 +13,13 @@ HINT: -nt AUTO will automatically determine the best number of threads to use.
 
 Reading partition model file BOTHp.raxml ...
 Reading alignment file seqs.fasta ... Fasta format detected
-Reading fasta file: done in 0.00541997 secs using 29.54% CPU
+Reading fasta file: done in 0.00469899 secs using 25.11% CPU
 Alignment most likely contains protein sequences
-Constructing alignment: done in 0.00293112 secs using 69.53% CPU
+Constructing alignment: done in 0.00176406 secs using 68.65% CPU
 Alignment has 33 sequences with 1024 columns, 974 distinct patterns
 857 parsimony-informative, 88 singleton sites, 79 constant sites
                               Gap/Ambiguity  Composition  p-value
-Analyzing sequences: done in 0.00019598 secs using 89.29% CPU
+Analyzing sequences: done in 0.000181198 secs using 88.85% CPU
    1  AAC75006.1_alphafold.cif       35.55%    passed     57.14%
    2  AAP98818.1_alphafold.cif       44.14%    failed      0.00%
    3  AAQ00836.1_alphafold.cif        9.38%    passed     24.41%
@@ -66,7 +66,7 @@ Info: multi-threading strategy over partitions
 
 Reading model definition file 3DI.nexus ... 85 models and 214 frequency vectors loaded
 
-Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.007 seconds
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.023 seconds
 Perform fast likelihood tree search using LG+I+G model...
 Estimate model parameters (epsilon = 5.000)
 Initial log-likelihood: -42833.448
@@ -74,19 +74,19 @@ Current log-likelihood at step 1: -41791.699
 Current log-likelihood at step 2: -41548.504
 Current log-likelihood at step 3: -41541.670
 Current log-likelihood at step 4: -41541.288
-Parameters optimization took 3 rounds (2.054 sec)
+Parameters optimization took 3 rounds (1.908 sec)
 
 Perform nearest neighbor interchange...
-Optimizing NNI: done in 0.712137 secs using 97.88% CPU
+Optimizing NNI: done in 0.791917 secs using 95.76% CPU
 Estimate model parameters (epsilon = 1.000)
 Initial log-likelihood: -41501.311
 Current log-likelihood at step 1: -41500.701
 Partition-specific rates:  1.541 0.459
-Parameters optimization took 0 rounds (0.270 sec)
+Parameters optimization took 0 rounds (0.301 sec)
 
-Time for fast ML tree search: 3.064 seconds
+Time for fast ML tree search: 3.058 seconds
 
-NOTE: ModelFinder requires 29 MB RAM!
+NOTE: ModelFinder requires 12 MB RAM!
 Selecting individual models for 2 charsets using BIC...
  No. Model        Score       TreeLen     Charset
 WARNING: Normalizing state frequencies so that sum of them equals to 1
@@ -103,178 +103,2284 @@ WARNING: Normalizing state frequencies so that sum of them equals to 1
 WARNING: Normalizing state frequencies so that sum of them equals to 1
 WARNING: Normalizing state frequencies so that sum of them equals to 1
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+   4 LG+F+G4      51504.520   part1
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+   5 3DI+F+G4     23829.126   part2
+Best partition model BIC score: 75792.509 (LnL: -37535.818  df:104)
+Partition information was printed to BOTHp.raxml.best_scheme.nex
+Partition information in Raxml format was printed to BOTHp.raxml.best_scheme
+
+All model information printed to BOTHp.raxml.model.gz
+CPU time for ModelFinder: 20.362 seconds (0h:0m:20s)
+Wall-clock time for ModelFinder: 22.063 seconds (0h:0m:22s)
+Reading model definition file 3DI.nexus ... 85 models and 214 frequency vectors loaded
+Generating 1000 samples for ultrafast bootstrap (seed: 759468)...
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+
+NOTE: 24 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -37535.818
+Current log-likelihood at step 1: -37529.122
+Current log-likelihood at step 2: -37529.049
+Partition-specific rates:  1.653 0.347
+Parameters optimization took 1 rounds (0.574 sec)
+
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.000236034 secs using 91.51% CPU
+Computing ML distances took 0.002908 sec (of wall-clock time) 0.000289 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.000158072 secs using 99.32% CPU
+Constructing RapidNJ tree: done in 0.000290871 secs using 149.9% CPU
+Computing RapidNJ tree took 0.000808 sec (of wall-clock time) 0.000824 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -44962.546
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 1.461 second
+Computing log-likelihood of 98 initial trees ... 7.663 seconds
+Current best score: -37529.049
+
+Do NNI search on 20 best initial trees
+Optimizing NNI: done in 0.552404 secs using 95.69% CPU
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -37516.193
+Current log-likelihood at step 1: -37516.179
+Parameters optimization took 0 rounds (0.271 sec)
+
+BETTER TREE FOUND at iteration 1: -37516.179
+Optimizing NNI: done in 1.07483 secs using 97.04% CPU
+Optimizing NNI: done in 1.17388 secs using 98.27% CPU
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -37512.441
+Current log-likelihood at step 1: -37512.005
+Current log-likelihood at step 2: -37511.981
+Parameters optimization took 1 rounds (0.668 sec)
+
+BETTER TREE FOUND at iteration 3: -37511.981
+Optimizing NNI: done in 1.57477 secs using 97.01% CPU
+Optimizing NNI: done in 1.2337 secs using 95.97% CPU
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -37507.681
+Current log-likelihood at step 1: -37506.965
+Current log-likelihood at step 2: -37506.920
+Parameters optimization took 1 rounds (0.608 sec)
+
+BETTER TREE FOUND at iteration 5: -37506.920
+Optimizing NNI: done in 1.54355 secs using 94.41% CPU
+Optimizing NNI: done in 1.59001 secs using 96.17% CPU
+Optimizing NNI: done in 1.23208 secs using 97.39% CPU
+Optimizing NNI: done in 1.59208 secs using 97.18% CPU
+Optimizing NNI: done in 1.30707 secs using 98.14% CPU
+Iteration 10 / LogL: -37517.185 / Time: 0h:0m:26s
+Optimizing NNI: done in 1.45578 secs using 96.99% CPU
+Optimizing NNI: done in 1.59685 secs using 95.62% CPU
+Optimizing NNI: done in 1.62499 secs using 82.96% CPU
+Optimizing NNI: done in 1.55331 secs using 96.75% CPU
+Optimizing NNI: done in 1.53584 secs using 97.04% CPU
+Optimizing NNI: done in 2.76062 secs using 97.11% CPU
+Optimizing NNI: done in 1.42455 secs using 97.03% CPU
+Optimizing NNI: done in 1.62084 secs using 96.23% CPU
+Optimizing NNI: done in 2.70235 secs using 95.19% CPU
+Optimizing NNI: done in 1.46841 secs using 97.51% CPU
+Iteration 20 / LogL: -37517.244 / Time: 0h:0m:43s
+Finish initializing candidate tree set (13)
+Current best tree score: -37506.920 / CPU time: 41.639
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Optimizing NNI: done in 2.26298 secs using 96.09% CPU
+Optimizing NNI: done in 1.48489 secs using 96.47% CPU
+Optimizing NNI: done in 1.29417 secs using 96.63% CPU
+Optimizing NNI: done in 2.32424 secs using 97.04% CPU
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -37505.384
+Current log-likelihood at step 1: -37505.375
+Parameters optimization took 0 rounds (0.266 sec)
+
+BETTER TREE FOUND at iteration 24: -37505.375
+Optimizing NNI: done in 2.52638 secs using 96.42% CPU
+Optimizing NNI: done in 2.4571 secs using 97.31% CPU
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -37499.787
+Current log-likelihood at step 1: -37499.763
+Parameters optimization took 0 rounds (0.293 sec)
+
+BETTER TREE FOUND at iteration 26: -37499.763
+Optimizing NNI: done in 1.63747 secs using 96.93% CPU
+Optimizing NNI: done in 1.65376 secs using 96.02% CPU
+Optimizing NNI: done in 2.12055 secs using 96.86% CPU
+Optimizing NNI: done in 2.95628 secs using 96.75% CPU
+Iteration 30 / LogL: -37506.722 / Time: 0h:1m:5s (0h:3m:36s left)
+Optimizing NNI: done in 1.7028 secs using 98.05% CPU
+Optimizing NNI: done in 2.93007 secs using 97.7% CPU
+Optimizing NNI: done in 2.11937 secs using 97.31% CPU
+Optimizing NNI: done in 1.48607 secs using 97.82% CPU
+Optimizing NNI: done in 2.55959 secs using 97.42% CPU
+Optimizing NNI: done in 1.69513 secs using 97.5% CPU
+Optimizing NNI: done in 2.24193 secs using 96.72% CPU
+Optimizing NNI: done in 1.84366 secs using 97.4% CPU
+Optimizing NNI: done in 1.72462 secs using 97.25% CPU
+Optimizing NNI: done in 1.93184 secs using 96.97% CPU
+Iteration 40 / LogL: -37501.661 / Time: 0h:1m:25s (0h:3m:9s left)
+Optimizing NNI: done in 1.836 secs using 98.46% CPU
+Optimizing NNI: done in 2.80525 secs using 88.65% CPU
+Optimizing NNI: done in 1.37051 secs using 97.06% CPU
+Optimizing NNI: done in 1.51702 secs using 91.12% CPU
+Optimizing NNI: done in 1.68559 secs using 98.41% CPU
+Optimizing NNI: done in 1.98018 secs using 97.14% CPU
+Optimizing NNI: done in 1.64152 secs using 98.52% CPU
+Optimizing NNI: done in 1.93395 secs using 96.58% CPU
+Optimizing NNI: done in 1.2474 secs using 98.58% CPU
+Optimizing NNI: done in 2.50667 secs using 95.55% CPU
+Iteration 50 / LogL: -37549.188 / Time: 0h:1m:44s (0h:2m:42s left)
+Optimizing NNI: done in 1.34327 secs using 98.65% CPU
+Optimizing NNI: done in 1.16524 secs using 97.2% CPU
+Optimizing NNI: done in 1.90952 secs using 97.83% CPU
+Optimizing NNI: done in 2.0543 secs using 96.63% CPU
+Optimizing NNI: done in 2.24903 secs using 96.33% CPU
+Optimizing NNI: done in 1.49069 secs using 97.41% CPU
+Optimizing NNI: done in 1.66536 secs using 97.37% CPU
+Optimizing NNI: done in 1.28561 secs using 96.38% CPU
+Optimizing NNI: done in 1.48792 secs using 96.07% CPU
+Optimizing NNI: done in 1.73913 secs using 94.88% CPU
+Iteration 60 / LogL: -37500.292 / Time: 0h:2m:1s (0h:2m:15s left)
+Optimizing NNI: done in 1.99791 secs using 91.28% CPU
+Optimizing NNI: done in 2.20923 secs using 80.64% CPU
+Optimizing NNI: done in 2.51724 secs using 97.02% CPU
+Optimizing NNI: done in 1.9869 secs using 95.93% CPU
+Optimizing NNI: done in 2.86468 secs using 96.95% CPU
+Optimizing NNI: done in 1.01996 secs using 96.75% CPU
+Optimizing NNI: done in 2.24727 secs using 96.54% CPU
+Optimizing NNI: done in 1.65104 secs using 96.95% CPU
+Optimizing NNI: done in 2.10622 secs using 95.93% CPU
+Optimizing NNI: done in 2.0443 secs using 97.06% CPU
+Iteration 70 / LogL: -37541.222 / Time: 0h:2m:22s (0h:1m:55s left)
+Optimizing NNI: done in 1.05483 secs using 97.93% CPU
+Optimizing NNI: done in 2.62455 secs using 96.06% CPU
+Optimizing NNI: done in 1.41149 secs using 96.11% CPU
+Optimizing NNI: done in 1.24787 secs using 97.63% CPU
+Optimizing NNI: done in 1.66264 secs using 85.99% CPU
+Optimizing NNI: done in 2.97951 secs using 97.02% CPU
+Optimizing NNI: done in 1.39539 secs using 96.18% CPU
+Optimizing NNI: done in 1.16816 secs using 96.7% CPU
+Optimizing NNI: done in 1.97923 secs using 97.81% CPU
+Optimizing NNI: done in 1.10484 secs using 97.35% CPU
+Iteration 80 / LogL: -37503.988 / Time: 0h:2m:39s (0h:1m:32s left)
+Optimizing NNI: done in 1.88216 secs using 97.65% CPU
+Optimizing NNI: done in 2.36061 secs using 97.2% CPU
+Optimizing NNI: done in 1.47184 secs using 98.31% CPU
+Optimizing NNI: done in 1.54124 secs using 96.93% CPU
+Optimizing NNI: done in 1.95679 secs using 96.65% CPU
+Optimizing NNI: done in 1.43676 secs using 96.79% CPU
+Optimizing NNI: done in 1.43147 secs using 95.47% CPU
+Optimizing NNI: done in 1.86422 secs using 97.19% CPU
+Optimizing NNI: done in 2.12397 secs using 98.05% CPU
+Optimizing NNI: done in 2.24052 secs using 97.13% CPU
+Iteration 90 / LogL: -37506.225 / Time: 0h:2m:57s (0h:1m:11s left)
+Optimizing NNI: done in 2.91523 secs using 96.57% CPU
+Optimizing NNI: done in 1.41743 secs using 96.34% CPU
+Optimizing NNI: done in 1.78437 secs using 97.61% CPU
+Optimizing NNI: done in 1.53734 secs using 97.25% CPU
+Optimizing NNI: done in 1.68096 secs using 97.83% CPU
+Optimizing NNI: done in 1.64093 secs using 95.55% CPU
+Optimizing NNI: done in 1.35708 secs using 98.36% CPU
+Optimizing NNI: done in 2.11977 secs using 96.94% CPU
+Optimizing NNI: done in 1.7663 secs using 97.31% CPU
+Optimizing NNI: done in 1.80867 secs using 97.4% CPU
+Iteration 100 / LogL: -37502.467 / Time: 0h:3m:15s (0h:0m:51s left)
+Optimizing NNI: done in 1.71949 secs using 97.65% CPU
+Optimizing NNI: done in 1.62967 secs using 97.13% CPU
+Optimizing NNI: done in 1.85651 secs using 97.15% CPU
+Optimizing NNI: done in 2.18351 secs using 97.55% CPU
+Optimizing NNI: done in 1.7324 secs using 98.07% CPU
+Optimizing NNI: done in 2.29186 secs using 97.49% CPU
+Optimizing NNI: done in 1.28734 secs using 96.86% CPU
+Optimizing NNI: done in 2.24604 secs using 89.64% CPU
+Optimizing NNI: done in 2.63055 secs using 96.93% CPU
+Optimizing NNI: done in 2.35146 secs using 97.5% CPU
+Iteration 110 / LogL: -37515.923 / Time: 0h:3m:35s (0h:0m:31s left)
+Optimizing NNI: done in 1.43477 secs using 97.43% CPU
+Optimizing NNI: done in 1.52756 secs using 97.3% CPU
+Optimizing NNI: done in 1.72366 secs using 97.76% CPU
+Optimizing NNI: done in 1.11055 secs using 95% CPU
+Optimizing NNI: done in 1.08202 secs using 97.68% CPU
+Optimizing NNI: done in 1.79799 secs using 97.83% CPU
+Optimizing NNI: done in 2.65025 secs using 97.88% CPU
+Optimizing NNI: done in 1.22741 secs using 97.04% CPU
+Optimizing NNI: done in 1.57544 secs using 95.17% CPU
+Optimizing NNI: done in 1.79902 secs using 96.74% CPU
+Iteration 120 / LogL: -37510.402 / Time: 0h:3m:52s (0h:0m:11s left)
+Optimizing NNI: done in 1.61661 secs using 97.26% CPU
+Optimizing NNI: done in 1.39974 secs using 97.58% CPU
+Optimizing NNI: done in 2.19095 secs using 97.58% CPU
+Optimizing NNI: done in 1.0537 secs using 97.95% CPU
+Optimizing NNI: done in 1.90638 secs using 97.18% CPU
+Optimizing NNI: done in 1.23099 secs using 96.6% CPU
+Optimizing NNI: done in 1.63521 secs using 97.6% CPU
+Refining ufboot trees with NNI 5 branches...
+Reading model definition file 3DI.nexus ... 85 models and 214 frequency vectors loaded
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.340711 secs using 99.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.565712 secs using 98.22% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.757779 secs using 98.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.01614 secs using 97.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.515067 secs using 96.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.303889 secs using 97.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.57437 secs using 96.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.594452 secs using 98.38% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.909307 secs using 98.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.659564 secs using 92.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.548732 secs using 94.81% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.539277 secs using 96.3% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.596138 secs using 97.1% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.11718 secs using 98.23% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.749706 secs using 97.92% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.674312 secs using 96.71% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.354238 secs using 98.51% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.793496 secs using 98.65% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.386474 secs using 99.14% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+FU is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+FU
+Optimizing NNI: done in 0.816743 secs using 96.63% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+FU+G is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+FU+G
+Optimizing NNI: done in 0.886855 secs using 97.1% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+FU+R2 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+FU+R2
+Optimizing NNI: done in 0.840619 secs using 97.97% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+FU+R3 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+FU+R3
+Optimizing NNI: done in 1.08364 secs using 98.1% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+FU+R4 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+FU+R4
+Optimizing NNI: done in 0.564264 secs using 95.9% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+FU+R5 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+FU+R5
+Optimizing NNI: done in 0.814714 secs using 96.71% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+FU+R6 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+FU+R6
+Optimizing NNI: done in 0.61156 secs using 98.36% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+F is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+F
+Optimizing NNI: done in 0.238547 secs using 98.47% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+F+G is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+F+G
+Optimizing NNI: done in 0.362194 secs using 98.84% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+F+R2 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+F+R2
+Optimizing NNI: done in 0.618507 secs using 96.28% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+F+R3 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+F+R3
+Optimizing NNI: done in 0.363619 secs using 97.82% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+F+R4 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+F+R4
+Optimizing NNI: done in 0.828345 secs using 97.47% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX2+F+R5 is alias for MIX{BurEX2:0.672020808818762,ExpEX2:1.6413466609931}+F+R5
+Optimizing NNI: done in 0.510336 secs using 97.18% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+FU is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+FU
+Optimizing NNI: done in 0.540469 secs using 97.25% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.660545 secs using 97.65% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+FU+G is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+FU+G
+Optimizing NNI: done in 0.745176 secs using 73.27% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.913419 secs using 97.24% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+FU+R2 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+FU+R2
+Optimizing NNI: done in 0.407263 secs using 97.59% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.991119 secs using 95.85% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+FU+R3 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+FU+R3
+Optimizing NNI: done in 0.967135 secs using 96.45% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.68948 secs using 97.56% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+FU+R4 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+FU+R4
+Optimizing NNI: done in 0.427573 secs using 99.1% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.38881 secs using 96.51% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+FU+R5 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+FU+R5
+Optimizing NNI: done in 0.879668 secs using 98.24% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.319737 secs using 97.75% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+F is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+F
+Optimizing NNI: done in 0.476667 secs using 98.83% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.308995 secs using 96.08% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+F+G is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+F+G
+Optimizing NNI: done in 1.17783 secs using 97.29% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.704863 secs using 97.8% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+F+R2 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+F+R2
+Optimizing NNI: done in 0.694196 secs using 98.43% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.598619 secs using 97.28% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+F+R3 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+F+R3
+Optimizing NNI: done in 0.907468 secs using 97.1% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.592665 secs using 87.49% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+F+R4 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+F+R4
+Optimizing NNI: done in 0.318278 secs using 97.04% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.430598 secs using 98.97% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX3+F+R5 is alias for MIX{BurEX3:0.427672756793791,IntEX3:0.837595938019774,HExEX3:1.51863631431518}+F+R5
+Optimizing NNI: done in 0.424923 secs using 98.73% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.581054 secs using 71.91% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+FU is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+FU
+Optimizing NNI: done in 0.359855 secs using 96.79% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.528314 secs using 97.4% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.440868 secs using 97.56% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+FU+G is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+FU+G
+Optimizing NNI: done in 1.29898 secs using 87.57% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.626113 secs using 96.54% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.48917 secs using 96.8% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+FU+R2 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+FU+R2
+Optimizing NNI: done in 0.390538 secs using 97.42% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.750022 secs using 93.76% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.806512 secs using 98.91% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+FU+R3 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+FU+R3
+Optimizing NNI: done in 0.675374 secs using 95.99% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.80897 secs using 97.18% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.43615 secs using 97.52% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+FU+R4 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+FU+R4
+Optimizing NNI: done in 0.356596 secs using 99.13% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.291988 secs using 98.21% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.633977 secs using 96.76% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+FU+R5 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+FU+R5
+Optimizing NNI: done in 0.641619 secs using 97.63% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.714285 secs using 94.52% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.51758 secs using 98.01% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+F is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+F
+Optimizing NNI: done in 0.530831 secs using 98.85% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.06068 secs using 96.52% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.683785 secs using 97.38% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+F+G is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+F+G
+Optimizing NNI: done in 0.770689 secs using 94.37% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.747842 secs using 98.35% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.28708 secs using 96.57% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+F+R2 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+F+R2
+Optimizing NNI: done in 0.576375 secs using 97.22% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.386147 secs using 98.02% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.382362 secs using 97.78% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+F+R3 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+F+R3
+Optimizing NNI: done in 0.414657 secs using 98.63% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.248052 secs using 96.65% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.61667 secs using 97.45% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+F+R4 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+F+R4
+Optimizing NNI: done in 0.906969 secs using 97.33% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.433562 secs using 98.11% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.08734 secs using 98.01% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EHO+F+R5 is alias for MIX{ExtEHO:0.720274356,HelEHO:0.976798797,OthEHO:0.783109376}+F+R5
+Optimizing NNI: done in 0.372282 secs using 97.74% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.620164 secs using 92.67% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.381403 secs using 90.96% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+FU is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+FU
+Optimizing NNI: done in 1.07927 secs using 93.65% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.280686 secs using 98.93% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.453353 secs using 86.47% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+FU+G is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+FU+G
+Optimizing NNI: done in 1.18293 secs using 85.87% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.866652 secs using 88.72% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.528786 secs using 94.36% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+FU+R2 is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+FU+R2
+Optimizing NNI: done in 0.278059 secs using 93.8% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.57086 secs using 83.6% CPU
+100 samples done
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.562832 secs using 85.5% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+FU+R3 is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+FU+R3
+Optimizing NNI: done in 0.549131 secs using 95.53% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.552101 secs using 90.81% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.635676 secs using 91.13% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+FU+R4 is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+FU+R4
+Optimizing NNI: done in 0.415188 secs using 89.27% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.381175 secs using 91.52% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.351461 secs using 96.31% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+FU+R5 is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+FU+R5
+Optimizing NNI: done in 2.07224 secs using 85.47% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.493113 secs using 93.58% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.490694 secs using 92.65% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+F is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+F
+Optimizing NNI: done in 0.506705 secs using 96.84% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.669688 secs using 80.43% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.683188 secs using 89.77% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+F+G is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+F+G
+Optimizing NNI: done in 0.362204 secs using 98.39% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.282765 secs using 98.36% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.553838 secs using 95.48% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+F+R2 is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+F+R2
+Optimizing NNI: done in 1.06135 secs using 90.59% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.924871 secs using 83.99% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.439553 secs using 96.66% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+F+R3 is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+F+R3
+Optimizing NNI: done in 0.607087 secs using 94.29% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.890829 secs using 96.84% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.450524 secs using 96.73% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-Model EX_EHO+F+R4 is alias for MIX{BUR_EXT:0.761816796788931,BUR_HEL:0.744425646802117,BUR_OTH:0.532457759429489,EXP_EXT:1.5639387472863,EXP_HEL:2.06403411829438,EXP_OTH:1.43336795177594}+F+R4
+Optimizing NNI: done in 0.489512 secs using 97.39% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.294001 secs using 98.09% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.662925 secs using 94.9% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.915473 secs using 96.01% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
-   4 EX_EHO+FU+G  51414.841   part1
+Optimizing NNI: done in 0.411176 secs using 96.66% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.750834 secs using 98.46% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.982117 secs using 97.54% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.703815 secs using 97.47% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.253391 secs using 97.02% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.920876 secs using 95.29% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.904005 secs using 97.44% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.345415 secs using 95.26% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.357698 secs using 97.26% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.719824 secs using 96.97% CPU
 WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.362144 secs using 88.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.805705 secs using 92.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.761406 secs using 93.08% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.430849 secs using 88.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.393297 secs using 95.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.659476 secs using 96.85% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.63106 secs using 98.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.57038 secs using 97.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.870114 secs using 97.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.704784 secs using 94.34% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.979023 secs using 98.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.711328 secs using 97.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.63028 secs using 96.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.995173 secs using 97.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.402208 secs using 98.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.484908 secs using 98.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.519354 secs using 93.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.363122 secs using 95.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.529299 secs using 96.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.473277 secs using 95.83% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.386107 secs using 97.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.420176 secs using 98.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.453188 secs using 96.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.315738 secs using 96.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.244922 secs using 96.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.966919 secs using 95.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.755245 secs using 75.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.345049 secs using 97.11% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.457796 secs using 93.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.665911 secs using 95.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.652489 secs using 96.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.322254 secs using 98.23% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.783585 secs using 98.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.603803 secs using 92.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.573332 secs using 96.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.252665 secs using 97.28% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.575913 secs using 97.4% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.419491 secs using 98.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.575871 secs using 98.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.342411 secs using 96.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.429406 secs using 92.49% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.530483 secs using 95.22% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.441203 secs using 96.5% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.345054 secs using 97.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.820998 secs using 98.16% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.11092 secs using 93.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.267508 secs using 95.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.538236 secs using 95.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.664205 secs using 98.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.419282 secs using 98.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.38431 secs using 95.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.05888 secs using 96.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.481711 secs using 97.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.424613 secs using 97.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.507719 secs using 98.83% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.738714 secs using 94.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.417477 secs using 95.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.715999 secs using 96.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.649373 secs using 97.69% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.356185 secs using 98.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.743167 secs using 97.02% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.528913 secs using 95.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.749684 secs using 82.16% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.53619 secs using 97.6% CPU
+200 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.763706 secs using 94.29% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.71391 secs using 96.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.626359 secs using 97.28% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.448459 secs using 95.63% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.382142 secs using 97.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.530156 secs using 95.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.314975 secs using 98.65% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.400061 secs using 94.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.420922 secs using 97.08% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.729648 secs using 96.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.346992 secs using 97.56% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.304766 secs using 98.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.775137 secs using 98.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.559632 secs using 97.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.98289 secs using 97.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.692216 secs using 97.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.524281 secs using 96.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.627822 secs using 96.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.357414 secs using 97.33% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.564539 secs using 95.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.598995 secs using 98.27% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.802499 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.343881 secs using 96.1% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.684052 secs using 96.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.692541 secs using 98.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.348578 secs using 97.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.367877 secs using 95.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.689246 secs using 96.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.699944 secs using 96.76% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.408389 secs using 98.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.451736 secs using 98.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.631857 secs using 92.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.389121 secs using 96.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.560875 secs using 96.8% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.726591 secs using 96.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.373353 secs using 98.37% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.688531 secs using 97.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.524557 secs using 96.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.821054 secs using 97.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.42059 secs using 97.16% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.415182 secs using 98.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.318594 secs using 98.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.242458 secs using 92.5% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.240171 secs using 97.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.508323 secs using 97.34% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.59733 secs using 96.34% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.325099 secs using 97.66% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.28191 secs using 99.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.630215 secs using 98.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.01579 secs using 96.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.608885 secs using 96.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.766005 secs using 94.76% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.788138 secs using 98.46% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.632161 secs using 97.24% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.513168 secs using 97.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.362079 secs using 97.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.48777 secs using 98.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.714498 secs using 98.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.789987 secs using 96.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.543195 secs using 97.33% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.834824 secs using 98.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.348338 secs using 98.71% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.637306 secs using 92.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.335224 secs using 95.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.903505 secs using 97.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.406268 secs using 94.85% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.537351 secs using 97.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.301433 secs using 98.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.299066 secs using 99.02% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.355996 secs using 96.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.364097 secs using 97.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.04781 secs using 96.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.30814 secs using 98.49% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.863028 secs using 98.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.425096 secs using 96.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.321282 secs using 97.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.776344 secs using 96.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.625714 secs using 97.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.29444 secs using 98.71% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.294353 secs using 99.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.859072 secs using 96.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.352557 secs using 97.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.717572 secs using 93.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.593787 secs using 98.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.711916 secs using 96.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.519271 secs using 96.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.360627 secs using 97.77% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.16402 secs using 79.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.440936 secs using 97.22% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.649664 secs using 97.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.325408 secs using 97.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.801556 secs using 97.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.579232 secs using 96.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.508036 secs using 98.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.458817 secs using 94.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.531055 secs using 98.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.392327 secs using 97.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.1154 secs using 95.56% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.536849 secs using 98.18% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.60108 secs using 98.71% CPU
+300 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.377523 secs using 99.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.245172 secs using 94.34% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.716374 secs using 97.46% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.422931 secs using 97.5% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.618332 secs using 97.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.543941 secs using 98.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.474668 secs using 97.67% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.625046 secs using 97.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.692004 secs using 97.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.538607 secs using 95.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.480182 secs using 97.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.582591 secs using 96.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.619871 secs using 91.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.449532 secs using 96.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.398663 secs using 96.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.340726 secs using 95.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.723591 secs using 98.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.660624 secs using 96.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.521347 secs using 96.32% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.432582 secs using 96.45% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.400269 secs using 98.32% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.319907 secs using 99.02% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.280559 secs using 99.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.58344 secs using 97.11% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.413877 secs using 97.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.90595 secs using 96.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.949828 secs using 93.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.518883 secs using 97.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.942323 secs using 95.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.257423 secs using 96.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.529563 secs using 96.16% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.805605 secs using 88.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.504311 secs using 89.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.612381 secs using 94.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.930476 secs using 89.18% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.419414 secs using 95.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.49135 secs using 79.22% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.370228 secs using 93.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.461434 secs using 92.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.355903 secs using 95.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.381378 secs using 95.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.70981 secs using 95.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.681662 secs using 96.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.388849 secs using 96.03% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.592523 secs using 96.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.505032 secs using 97.03% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.357145 secs using 97.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.402275 secs using 98.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.977217 secs using 97.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.892692 secs using 96.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.787789 secs using 97.38% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.830799 secs using 98.44% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.692134 secs using 95.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.432322 secs using 96.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.610186 secs using 96.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.508125 secs using 94.23% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.481225 secs using 97.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.775003 secs using 96.22% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.478503 secs using 94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.495667 secs using 96.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.893243 secs using 97.96% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.405381 secs using 98.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.995032 secs using 96.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.34625 secs using 96.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.362188 secs using 97.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.486446 secs using 97.67% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.333917 secs using 97.63% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.376197 secs using 96.97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.665709 secs using 96.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.532019 secs using 96.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.372458 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.369338 secs using 97.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.658006 secs using 97.73% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.85261 secs using 95.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.608238 secs using 68.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.747202 secs using 88.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.654353 secs using 97.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.456117 secs using 98.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.98536 secs using 96.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.779274 secs using 96.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.395673 secs using 96.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.236126 secs using 98.4% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.654967 secs using 97.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.800392 secs using 96.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.372509 secs using 95.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.761068 secs using 91.85% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.313109 secs using 96.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.410719 secs using 98.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.492084 secs using 96.38% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.261506 secs using 94.45% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.667049 secs using 96.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.355283 secs using 95.85% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.460499 secs using 97.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.559691 secs using 98.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.522114 secs using 98.39% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.392272 secs using 96.26% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.56739 secs using 96.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.426073 secs using 96.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.761736 secs using 97.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.31853 secs using 98.53% CPU
+400 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.476296 secs using 98.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.66997 secs using 96.18% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.03266 secs using 95.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.746591 secs using 96.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.413977 secs using 98.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.389731 secs using 96.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.846709 secs using 95.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.365 secs using 93.77% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.774759 secs using 97.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.614964 secs using 98.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.436072 secs using 95.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.414668 secs using 96.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.356086 secs using 96.67% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.521015 secs using 95.8% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.34326 secs using 97.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.533804 secs using 98.29% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.353494 secs using 99.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.495956 secs using 95.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.449404 secs using 94.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.868608 secs using 94.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.719846 secs using 96.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.664864 secs using 98.08% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.237872 secs using 97.2% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.234455 secs using 97.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.406096 secs using 97.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.343981 secs using 96.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.696554 secs using 97.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.32944 secs using 99.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.620639 secs using 97.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.428724 secs using 96.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.587357 secs using 94.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.529844 secs using 97.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.75375 secs using 98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.394643 secs using 98.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.443373 secs using 93.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.609897 secs using 97.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.90088 secs using 96.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.53895 secs using 98.44% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.561428 secs using 99.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.522241 secs using 96.65% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.445192 secs using 97.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.237856 secs using 96.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.81154 secs using 97.2% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.417507 secs using 98.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.467276 secs using 97.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.364137 secs using 97.11% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.625151 secs using 97.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.940505 secs using 98.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.853425 secs using 98.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.52956 secs using 93.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.363067 secs using 95.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.584937 secs using 92.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.339502 secs using 97.37% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.51113 secs using 98.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.05235 secs using 97.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.526077 secs using 97.11% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.387365 secs using 97.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.443683 secs using 98.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.450076 secs using 98.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.371907 secs using 98.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.302306 secs using 98.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.569036 secs using 96.26% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.595679 secs using 96.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.734821 secs using 97.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.6992 secs using 97.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.23453 secs using 96.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.384189 secs using 96.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.15284 secs using 83.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.78679 secs using 97.69% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.548937 secs using 97.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.579462 secs using 98.71% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.843509 secs using 97.29% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.620966 secs using 97.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.355799 secs using 97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.808656 secs using 98.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.366192 secs using 98.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.520824 secs using 96.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.421102 secs using 96.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.02086 secs using 96.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.718064 secs using 96.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.534552 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.248642 secs using 97.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.395691 secs using 91.44% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.536256 secs using 97.03% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.580178 secs using 97.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.769546 secs using 98.63% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.40918 secs using 97.24% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.371185 secs using 97.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.849614 secs using 97.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.499459 secs using 97.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.438962 secs using 98.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.446184 secs using 98.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.246025 secs using 95.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.550048 secs using 76.23% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.850216 secs using 97.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.407998 secs using 93.26% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.669019 secs using 70.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.478219 secs using 90.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.740903 secs using 85.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.64208 secs using 89.34% CPU
+500 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.573583 secs using 97.39% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.739317 secs using 85.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.403783 secs using 89.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.610599 secs using 79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.64374 secs using 86.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.777011 secs using 96.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.644981 secs using 80.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.54813 secs using 96.73% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.01968 secs using 83.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.321225 secs using 86.16% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.02534 secs using 88.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.485068 secs using 87.12% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.599423 secs using 86.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.563801 secs using 88.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.89593 secs using 86.28% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.23908 secs using 85.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.47921 secs using 89.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.743934 secs using 89.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.2235 secs using 85.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.19837 secs using 85.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.03562 secs using 79.2% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.14212 secs using 88.4% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.597269 secs using 88.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.534631 secs using 88.26% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.336851 secs using 92.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.636664 secs using 84.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.950285 secs using 90.67% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.16398 secs using 87.49% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.885231 secs using 89.4% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.528877 secs using 83.62% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.652596 secs using 83.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.384234 secs using 94.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.75046 secs using 83.01% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.843944 secs using 83.69% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.573817 secs using 83.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.48069 secs using 88.62% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.892955 secs using 88.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.02403 secs using 82.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.44586 secs using 85.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.629853 secs using 84.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.504359 secs using 88.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.729072 secs using 80.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.19773 secs using 79.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.23012 secs using 81.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.417882 secs using 83.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.531959 secs using 89.66% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.06375 secs using 90.03% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.603372 secs using 86.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.24266 secs using 86.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.720596 secs using 89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.827922 secs using 84.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.863597 secs using 86.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.818538 secs using 86.5% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.575139 secs using 93.2% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.368155 secs using 91.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.928584 secs using 83.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.08128 secs using 81.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.661652 secs using 86.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.857569 secs using 89.29% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.517501 secs using 82.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.790412 secs using 84.37% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.33436 secs using 81.11% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.49049 secs using 84.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.57173 secs using 84.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.531293 secs using 81.03% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.28964 secs using 76.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.335913 secs using 78.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.16598 secs using 80.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.466882 secs using 71.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.5369 secs using 74.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.549228 secs using 77.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.851844 secs using 78.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.9826 secs using 81.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.602665 secs using 85.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.4885 secs using 77.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.14097 secs using 87.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.87738 secs using 81.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.912054 secs using 84.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.519764 secs using 88.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.377922 secs using 92.97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.672286 secs using 68.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.17069 secs using 70.34% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.47215 secs using 91.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.373272 secs using 96.27% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.681508 secs using 94.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.365232 secs using 94.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.742709 secs using 87.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.998481 secs using 91.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.840597 secs using 88.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.648849 secs using 98.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.374619 secs using 95.49% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.856609 secs using 92.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.425474 secs using 96.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.430191 secs using 97.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.700647 secs using 96.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.751972 secs using 97.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.331084 secs using 96% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.702908 secs using 96.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.53671 secs using 97.39% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.631806 secs using 96.48% CPU
+600 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.567244 secs using 95.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.713355 secs using 96.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.906124 secs using 97.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.589203 secs using 98.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.55666 secs using 94.44% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.47195 secs using 80.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.41423 secs using 95.69% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.675761 secs using 91.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.795749 secs using 82.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.590456 secs using 91.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.04133 secs using 91.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.752171 secs using 96.44% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.689514 secs using 96.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.388382 secs using 97.77% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.595199 secs using 96.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.566758 secs using 97.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.468656 secs using 97.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.358182 secs using 98.5% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.329803 secs using 98.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.0431 secs using 94.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.368795 secs using 97.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.727884 secs using 93.73% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.585918 secs using 98.12% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.546427 secs using 98.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.555003 secs using 96.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.344963 secs using 97.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.917329 secs using 95.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.610024 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.426259 secs using 98.56% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.558107 secs using 97.1% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.373051 secs using 96.5% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.309251 secs using 97.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.354826 secs using 97.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.800167 secs using 97.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.325113 secs using 98.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.501899 secs using 98.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.877405 secs using 96.96% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.861925 secs using 96.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.320612 secs using 97.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.411748 secs using 99.11% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.65201 secs using 97.1% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.14803 secs using 97.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.381434 secs using 98.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.345464 secs using 98.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.595379 secs using 98.81% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.212401 secs using 98.56% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.12771 secs using 85.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.625183 secs using 83.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.593737 secs using 91.11% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.561238 secs using 90.76% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.566772 secs using 92.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.625767 secs using 85.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.693246 secs using 89.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.697392 secs using 89.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.626773 secs using 95.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.734729 secs using 88.71% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.940126 secs using 89.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.258598 secs using 96.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.477731 secs using 97.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.678648 secs using 97.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.471638 secs using 98.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.850226 secs using 92.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.846261 secs using 90.81% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.669635 secs using 92.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.275031 secs using 89.46% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.12081 secs using 96.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.375168 secs using 97.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.866725 secs using 97.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.634735 secs using 96.65% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.844621 secs using 96.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.36017 secs using 97.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.522963 secs using 96.5% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.400934 secs using 97.69% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.259142 secs using 92.37% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.781441 secs using 91.39% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.436512 secs using 94.8% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.559984 secs using 96.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.716635 secs using 96.12% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.844782 secs using 95.37% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.483452 secs using 98.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.674917 secs using 96.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.369314 secs using 96.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.630468 secs using 96.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.724353 secs using 97.4% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.791777 secs using 98.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.337483 secs using 97.26% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.650256 secs using 97.02% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.383306 secs using 96.81% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.533034 secs using 97.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.709634 secs using 75.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.544271 secs using 94.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.351301 secs using 95.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.3921 secs using 94.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.02134 secs using 95.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.404686 secs using 98.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.625559 secs using 97.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.528743 secs using 97.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.41164 secs using 96.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.560429 secs using 96.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.31693 secs using 98.09% CPU
+700 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.518362 secs using 98.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.00955 secs using 96.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.49102 secs using 96.28% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.436317 secs using 96.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.682105 secs using 97.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.245339 secs using 92.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.582838 secs using 97.33% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.696573 secs using 96.24% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.69035 secs using 92.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.696444 secs using 96.7% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.686638 secs using 98.77% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.777234 secs using 97.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.583814 secs using 96.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.318336 secs using 96.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.703782 secs using 97.46% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.419874 secs using 98.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.370159 secs using 98.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.07247 secs using 96.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.896091 secs using 97.77% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.253244 secs using 94.03% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.713986 secs using 98.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.794741 secs using 97.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.530022 secs using 94.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.05007 secs using 97.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.597759 secs using 98.02% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.362771 secs using 96.33% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.930157 secs using 96.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.615695 secs using 97.02% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.7479 secs using 98.27% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.294048 secs using 98.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.835319 secs using 93.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.689902 secs using 94.24% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.396848 secs using 95.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.417441 secs using 95.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.330101 secs using 98.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.24115 secs using 86.39% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.429481 secs using 87.22% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.670527 secs using 96.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.566046 secs using 97.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.48242 secs using 95.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.429105 secs using 93.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.339043 secs using 97.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.691995 secs using 97.18% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.550465 secs using 97.45% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.383198 secs using 95.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.34593 secs using 97.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.724196 secs using 96.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.602269 secs using 97.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.717941 secs using 98.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.56942 secs using 95.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.331174 secs using 95.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.99342 secs using 96.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.465893 secs using 98.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.264782 secs using 94.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.869109 secs using 97.18% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.40385 secs using 97.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.467808 secs using 96.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.664031 secs using 98.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.317954 secs using 97.71% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.723045 secs using 96.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.03919 secs using 97.37% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.365519 secs using 92.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.331274 secs using 91.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.868629 secs using 85.73% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.449741 secs using 95.2% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.41984 secs using 96.76% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.822252 secs using 95.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.61365 secs using 98.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.218844 secs using 98.76% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.381486 secs using 94.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.692616 secs using 96.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.570704 secs using 97.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.479893 secs using 54.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.564802 secs using 91.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.793098 secs using 90.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.949174 secs using 96.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.602914 secs using 97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.246042 secs using 97.08% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.589735 secs using 91.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.711797 secs using 96.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.755433 secs using 96.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.503452 secs using 97.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.42967 secs using 98.08% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.647444 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.840936 secs using 97.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.844734 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.33411 secs using 98.24% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.560761 secs using 98.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.213937 secs using 98.96% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.355909 secs using 98.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.803648 secs using 95.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.351219 secs using 95.47% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.319168 secs using 97.37% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.02411 secs using 96.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.32634 secs using 98.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.553867 secs using 97.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.368305 secs using 97.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.456697 secs using 96.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.742333 secs using 97.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.339109 secs using 99.04% CPU
+800 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.342321 secs using 98.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.364053 secs using 99.23% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.457241 secs using 97.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.484122 secs using 97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.451911 secs using 97.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.441094 secs using 97.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.512819 secs using 99.02% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.682133 secs using 97.56% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.708923 secs using 97.31% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.363794 secs using 95.73% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.37302 secs using 94.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.540869 secs using 98.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.407142 secs using 96.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.431923 secs using 97.26% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.388721 secs using 97.24% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.909833 secs using 97.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.343916 secs using 98.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.403853 secs using 95.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.3387 secs using 96.32% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.586167 secs using 96.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.926206 secs using 97.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.808088 secs using 98.8% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.474401 secs using 97.32% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.365009 secs using 98.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.573492 secs using 94.08% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.652503 secs using 96.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.474236 secs using 98.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.753113 secs using 98.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.349135 secs using 96.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.321593 secs using 96.69% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.49945 secs using 97.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.391497 secs using 96.65% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.532866 secs using 97.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.364622 secs using 98.45% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.504699 secs using 98.8% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.493947 secs using 97.04% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.0377 secs using 97.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.552375 secs using 97.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.426012 secs using 96.21% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.837232 secs using 86.29% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.740769 secs using 87.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.596923 secs using 88.12% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.673746 secs using 88.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.478719 secs using 91.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.490884 secs using 85.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.587449 secs using 84.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.47084 secs using 81.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.541932 secs using 85.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.442287 secs using 93.22% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.549182 secs using 96.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.830061 secs using 97.03% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.787955 secs using 96.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.718236 secs using 96.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.583573 secs using 98.38% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.23146 secs using 97.68% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.579532 secs using 96.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.370977 secs using 96.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.312092 secs using 96.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.807703 secs using 96.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.346433 secs using 96.61% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.371212 secs using 97.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.544425 secs using 96.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.593107 secs using 70.83% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.729316 secs using 95.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.462983 secs using 96.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.941939 secs using 98.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.555998 secs using 96.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.661415 secs using 95.81% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.06646 secs using 95.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.899063 secs using 94.65% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.512182 secs using 96.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.448549 secs using 95.57% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.44393 secs using 95.38% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.727045 secs using 97.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.565109 secs using 97.95% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.536591 secs using 94.26% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.587691 secs using 96.28% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.827699 secs using 96.32% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.43016 secs using 90.67% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.883501 secs using 89.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.69279 secs using 87.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.1472 secs using 85.74% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.491312 secs using 95.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.672063 secs using 77.77% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.260071 secs using 93.49% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.377915 secs using 97.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.871721 secs using 86.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.366131 secs using 92.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.319041 secs using 97.62% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.207966 secs using 98.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.601716 secs using 95.46% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.64541 secs using 96.96% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.67256 secs using 98.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.531591 secs using 97.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.378912 secs using 95.77% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.421693 secs using 91.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.566044 secs using 97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.252925 secs using 96.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.697633 secs using 96.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.871835 secs using 97.32% CPU
+900 samples done
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.57918 secs using 96.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.890648 secs using 92.66% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.470562 secs using 97.96% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.318423 secs using 98.53% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.240197 secs using 96.07% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.374509 secs using 95.52% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.64546 secs using 96.97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.751729 secs using 97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.607283 secs using 95.67% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.508498 secs using 98.36% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.02232 secs using 94.97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.504264 secs using 96.85% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.39018 secs using 97.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.311753 secs using 98.63% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.439097 secs using 95.33% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.408409 secs using 94.78% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.90611 secs using 96.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.26003 secs using 98.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.347018 secs using 95.19% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.882128 secs using 96.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.400022 secs using 86.96% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.576992 secs using 86.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.24309 secs using 93.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.434057 secs using 96.55% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.17526 secs using 93.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.816679 secs using 96.08% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.236645 secs using 95.73% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.06801 secs using 95.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.539487 secs using 96.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.765802 secs using 78.6% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.292763 secs using 97.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.327651 secs using 98.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.570244 secs using 96.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.42293 secs using 97.54% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.86731 secs using 97.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.53046 secs using 97.71% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.358037 secs using 97.06% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.632319 secs using 96.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.754079 secs using 97.27% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.14608 secs using 81.33% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.763866 secs using 97.38% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.67595 secs using 96.64% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.784468 secs using 98.43% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.602986 secs using 98.49% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.470907 secs using 97.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.622222 secs using 97.3% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.386671 secs using 97.87% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.766228 secs using 98.42% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.488039 secs using 96.41% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.687066 secs using 97.39% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.408213 secs using 97.12% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.16425 secs using 94.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.739523 secs using 98.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.394561 secs using 98.71% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.565393 secs using 96.75% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.543333 secs using 95.97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.752599 secs using 97.88% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.355436 secs using 98.56% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.321882 secs using 98.48% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.424047 secs using 95.98% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.345867 secs using 97.12% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.705198 secs using 95.33% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.526798 secs using 98.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.350799 secs using 95.79% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.661661 secs using 98.72% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.601214 secs using 96.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.548979 secs using 96.99% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.86037 secs using 96.93% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.783245 secs using 96.89% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.536909 secs using 96.18% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.355226 secs using 95.15% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.375282 secs using 96.25% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.420258 secs using 97.9% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.670029 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.708983 secs using 97.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.251861 secs using 96.09% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.873895 secs using 96.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.474567 secs using 97.29% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.223678 secs using 97.51% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.865699 secs using 97.63% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.53789 secs using 96.92% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.829405 secs using 96.86% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.501392 secs using 88.59% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.72185 secs using 97.97% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.22364 secs using 96.94% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.524519 secs using 96.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.39512 secs using 97.65% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.882908 secs using 97.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.741561 secs using 97.82% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.424781 secs using 97.66% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.247131 secs using 96.91% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.912863 secs using 97.49% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.753266 secs using 97.35% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.661061 secs using 97.13% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.37476 secs using 98.05% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.630673 secs using 97.17% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.741459 secs using 98.14% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.234814 secs using 97.84% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 1.13306 secs using 97.58% CPU
+WARNING: Normalizing state frequencies so that sum of them equals to 1
+Optimizing NNI: done in 0.95143 secs using 97.7% CPU
+1000 samples done
+Total 955 ufboot trees refined
+TREE SEARCH COMPLETED AFTER 127 ITERATIONS / Time: 0h:16m:13s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+Initial log-likelihood: -37499.763
+Current log-likelihood at step 1: -37499.758
+Partition-specific rates:  1.658 0.342
+Parameters optimization took 0 rounds (0.293 sec)
+
+Partition information was printed to BOTHp.raxml.best_model.nex
+BEST SCORE FOUND : -37499.758
+
+Testing tree branches by SH-like aLRT with 1000 replicates...
+0.877 sec.
+Creating bootstrap support values...
+Split supports printed to NEXUS file BOTHp.raxml.splits.nex
+Total tree length: 26.279
+
+Total number of iterations: 127
+CPU time used for tree search: 916.827 sec (0h:15m:16s)
+Wall-clock time used for tree search: 970.973 sec (0h:16m:10s)
+Total CPU time used: 920.508 sec (0h:15m:20s)
+Total wall-clock time used: 974.624 sec (0h:16m:14s)
+UFBoot trees printed to BOTHp.raxml.ufboot
+
+Computing bootstrap consensus tree...
+Reading input file BOTHp.raxml.splits.nex...
+33 taxa and 289 splits.
+Consensus tree written to BOTHp.raxml.contree
+Reading input trees file BOTHp.raxml.contree
+Log-likelihood of consensus tree: -37500.068
+
+Analysis results written to: 
+  IQ-TREE report:                BOTHp.raxml.iqtree
+  Maximum-likelihood tree:       BOTHp.raxml.treefile
+  Likelihood distances:          BOTHp.raxml.mldist
+  Best partitioning scheme:      BOTHp.raxml.best_scheme.nex
+           in RAxML format:      BOTHp.raxml.best_scheme
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          BOTHp.raxml.splits.nex
+  Consensus tree:                BOTHp.raxml.contree
+  UFBoot trees:                  BOTHp.raxml.ufboot
+  Screen log file:               BOTHp.raxml.log
+
+Date and Time: Wed Apr 15 15:14:21 2026
