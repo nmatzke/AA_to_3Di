@@ -1,0 +1,52 @@
+WP_011385860.1_alphafold.cif exists and will be overwritten
+easy-msa AAC75006.1_alphafold.cif AAP98818.1_alphafold.cif AAQ00836.1_alphafold.cif ABC76852.1_alphafold.cif ABF88562.1_alphafold.cif ABY36902.1_alphafold.cif ACD91087.1_alphafold.cif ACI20682.1_alphafold.cif ADB18917.1_alphafold.cif ADE84642.1_alphafold.cif AGW37977.1_alphafold.cif AHZ85048.1_alphafold.cif AIQ93516.1_alphafold.cif AJJ31778.1_alphafold.cif AJJ33030.1_alphafold.cif ATU66743.1_alphafold.cif AUX26777.1_alphafold.cif BAD39524.1_alphafold.cif BAH37372.1_alphafold.cif BAM05993.1_alphafold.cif CCB86228.1_alphafold.cif CCG56443.1_alphafold.cif CCW35060.1_alphafold.cif EKT86237.1_alphafold.cif QEO40368.1_alphafold.cif QJR34130.1_alphafold.cif QUV78475.1_alphafold.cif UOY14042.1_alphafold.cif UOY14169.1_alphafold.cif UOY14499.1_alphafold.cif UPH48283.1_alphafold.cif WP_002722827.1_alphafold.cif WP_011385860.1_alphafold.cif WP_160516493.1_alphafold.cif 
+
+MMseqs Version:                      	4bd8b8d8c20d439b52ff8a3fccc50a3aba2be286
+Use GPU                              	0
+Path to ProstT5                      	
+Chain name mode                      	0
+Model name mode                      	0
+Createdb extraction mode             	0
+Interface distance threshold         	8
+Write mapping file                   	0
+Mask b-factor threshold              	0
+Coord store mode                     	2
+Write lookup file                    	1
+Input format                         	0
+File Inclusion Regex                 	.*
+File Exclusion Regex                 	^$
+Threads                              	4
+Verbosity                            	3
+Global sequence weighting            	true
+Match ratio                          	0.9
+Filter MSA                           	1
+Select N most diverse seqs           	5
+Minimum score per column             	-20
+Gap open cost                        	aa:25,nucl:25
+Gap extension cost                   	aa:2,nucl:2
+Mask profile                         	1
+Pseudo count mode                    	0
+Input Newick guide tree              	
+Recompute scores                     	false
+Substitution matrix                  	aa:3di.out,nucl:3di.out
+Max sequence length                  	65535
+Total refinement iterations          	0
+AA matrix bit factor                 	1.1
+3Di matrix bit factor                	2.1
+LDDT pair threshold                  	0
+Fast mode, disable neighbor score    	false
+Compositional bias                   	1
+Random number generator seed         	-1
+Normalise LDDT by no. scoring columns	false
+PSSM score bias                      	-0.6
+Neighborhood score decay constant    	3.84098
+Neighborhood score multiplier        	13
+Neighborhood angstrom cutoff         	45
+Neighborhood score low pass threshold	0.02
+All-vs-all SW gap open cost          	9
+All-vs-all SW gap extension cost     	8
+                                     	
+                                     	true
+Pre-cluster structures               	false
+Report mode                          	0
+
