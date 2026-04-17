@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<title> ChimeraX Log </title>
+<script type="text/javascript">
+window.onload = function() {
+  cxlinks_base="https://www.rbvi.ucsf.edu/chimerax/docs/"
+  if(!window.navigator.userAgent.includes("ChimeraX")){
+    window.onclick = function(e){
+      if(e.target.tagName.toLowerCase()!="a")
+	return true;
+      var url=e.target.getAttribute("href").toLowerCase();
+      if(url.startsWith("help:")){
+	window.location.href = cxlinks_base + url.substring(5);
+	return false;
+      }
+      if(url.startsWith("cxcmd:")){
+	alert("This link only works in a ChimeraX browser and would execute a command.");
+	return false;
+      }
+      return true;
+    }
+    var ls=document.links;
+    for(var i=0;i<ls.length;i++){
+      var link=ls[i];
+      var url=link.getAttribute("href").toLowerCase();
+      if(url.startsWith("cxcmd:"))
+	link.style.color="darkred";
+    }
+  }
+};
+</script>
+<style>
+
+.cxcmd_as_doc {
+    display: none;
+}
+.cxcmd_as_cmd {
+    display: inline;
+}
+</style>
+</head>
+<body>
+<h1> ChimeraX Log </h1>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/alphafold.html#match">alphafold match</a> MAVTSVKDKLATGEKKQRDIKSLNGRQKAAIFLVSIGEEISAKVMGELKEDEIEKLVFEIARTESVDAELKDAVLEEFQELMTAQNFITSGGIDYARGLLEKSLGSQKAIEIINRLTSSLQVRPFDFIRRTDPTHLLNFIQQEHPQTIALILAYLEPNKASVILQNLPDEIQSDVARRIATMDRTSPDVLREVERVLEKKLSTLSSEDYTAAGGVQNIVDILNLVDRSSEKSIVEALEDEDPDLAEEIKKRMFVFEDIVMLDDRAIQKVLREVNMEELAKALKVVDTEVQDKIFRNMSKRAGSMLKEEMEYMGPTRLKDVEEAQQKVVSIIRHLEDSGDIVIARSEEDEMIV</div><div class="cxcmd_as_cmd"><a href="cxcmd:alphafold match MAVTSVKDKLATGEKKQRDIKSLNGRQKAAIFLVSIGEEISAKVMGELKEDEIEKLVFEIARTESVDAELKDAVLEEFQELMTAQNFITSGGIDYARGLLEKSLGSQKAIEIINRLTSSLQVRPFDFIRRTDPTHLLNFIQQEHPQTIALILAYLEPNKASVILQNLPDEIQSDVARRIATMDRTSPDVLREVERVLEKKLSTLSSEDYTAAGGVQNIVDILNLVDRSSEKSIVEALEDEDPDLAEEIKKRMFVFEDIVMLDDRAIQKVLREVNMEELAKALKVVDTEVQDKIFRNMSKRAGSMLKEEMEYMGPTRLKDVEEAQQKVVSIIRHLEDSGDIVIARSEEDEMIV">alphafold match MAVTSVKDKLATGEKKQRDIKSLNGRQKAAIFLVSIGEEISAKVMGELKEDEIEKLVFEIARTESVDAELKDAVLEEFQELMTAQNFITSGGIDYARGLLEKSLGSQKAIEIINRLTSSLQVRPFDFIRRTDPTHLLNFIQQEHPQTIALILAYLEPNKASVILQNLPDEIQSDVARRIATMDRTSPDVLREVERVLEKKLSTLSSEDYTAAGGVQNIVDILNLVDRSSEKSIVEALEDEDPDLAEEIKKRMFVFEDIVMLDDRAIQKVLREVNMEELAKALKVVDTEVQDKIFRNMSKRAGSMLKEEMEYMGPTRLKDVEEAQQKVVSIIRHLEDSGDIVIARSEEDEMIV</a></div></div>1 AlphaFold model found using sequence similarity searches: A0A7Z2EN44 (1 sequences)<br>
+<table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr><th colspan=4>Sequence Similarity
+    <tr><th>AlphaFold Model<th>Query Sequence<th>Identity %<th>Coverage %
+  </thead>
+  <tbody>
+    <td style="text-align:center">A0A7Z2EN44_TREPL
+    <td style="text-align:center">MAVTS...DEMIV
+    <td style="text-align:center">100.0
+    <td style="text-align:center">100.0
+  </tbody>
+</table><br/>Opened 1 AlphaFold model<br>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/log.html#save">log save</a> UOY14499.1_alphafold.html executableLinks true</div><div class="cxcmd_as_cmd"><a href="cxcmd:log save UOY14499.1_alphafold.html executableLinks true">log save UOY14499.1_alphafold.html executableLinks true</a></div></div></body>
+</html>
